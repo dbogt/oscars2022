@@ -60,7 +60,7 @@ if st.checkbox('Make Predictions'):
         user_name = st.text_input("Your name (First Last)")
         user_email = st.text_input("Your email")
         user_city = st.text_input("Your city")
-        password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)")
+        password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)", type="password")
         best_movie_pick = st.selectbox('What movie will win the best picture?',best_movies)
         best_director_pick = st.selectbox('Who will win best director?', best_directors)
         best_actor_pick = st.selectbox('Who will win the best actor?', best_actors)
@@ -92,7 +92,7 @@ if st.checkbox('Make Predictions'):
 
 if st.checkbox('Show predictions by person'):
     safeDF = df[safeCols]
-    adminPass = st.text_input('Admin Password')
+    adminPass = st.text_input('Admin Password',type="password")
     if adminPass == st.secrets['admin_pass']:
         st.dataframe(df)
     else:
