@@ -20,8 +20,8 @@ def grab_predictions():
     df = df[cols]
     return df
 
-df = grab_predictions()
-emails = df['email'].to_list()
+# df = grab_predictions()
+# emails = df['email'].to_list()
 # st.write(emails)
 
 best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
