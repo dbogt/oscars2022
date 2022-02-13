@@ -7,10 +7,15 @@ st.title("Oscars 2022 Predictions")
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
 
-db_content = db.fetch().items
-df = pd.DataFrame(db_content)
-cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
-df = df[cols]
+def grab_predictions():
+
+    db_content = db.fetch().items
+    df = pd.DataFrame(db_content)
+    cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
+    df = df[cols]
+    return df
+
+df = grab_predictions()
 emails = df['email'].to_list()
 # st.write(emails)
 
@@ -66,6 +71,7 @@ with st.form("my_picks"):
                     'best_actor':best_actor_pick,
                     'best_actress':best_actress_pick,
                     'key':user_email})
+            df = grab_predictions()
         else:
             st.write("Incorrect password, try again or submit with another email!")
 
