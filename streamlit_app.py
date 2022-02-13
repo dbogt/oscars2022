@@ -49,8 +49,8 @@ if st.checkbox('Show nominees'):
         st.plotly_chart(figNom)
 
 
-
-best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
+best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
+# best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = ['Kenneth Branagh – Belfast',
                     'Ryusuke Hamaguchi – Drive My Car',
                     'Paul Thomas Anderson – Licorice Pizza',
