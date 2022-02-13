@@ -105,5 +105,5 @@ if st.checkbox('Show summary picks'):
         if outputType == 'Tables':
             st.write(df[colName].value_counts())
         else:
-            fig = px.histogram(df, x=colName, color="name", hover_name="city", barmode='stacked', labels={colName:pick}).update_xaxes(categoryorder="total descending")
+            fig = px.histogram(df, x=colName, color="name", hover_name="city", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
             st.plotly_chart(fig)
