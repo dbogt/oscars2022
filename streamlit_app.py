@@ -34,7 +34,7 @@ emails = df['email'].to_list()
 if st.checkbox('Show nominees'):
     nominationsOutput = st.radio('Output type',('Detailed Table','Count Summary','Chart'))
     st.write("Nominations by Movie")
-    if nominationsOutput == 'Detiled Table':
+    if nominationsOutput == 'Detailed Table':
         st.write('Nominations Details')
         st.write(nominees)
     elif nominationsOutput == 'Count Summary':
