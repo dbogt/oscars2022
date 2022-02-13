@@ -32,6 +32,7 @@ emails = df['email'].to_list()
 # st.write(emails)
 
 if st.checkbox('Show nominees'):
+    filterCategories = st.multiselect(nominees['Category'].unique())
     nominationsOutput = st.radio('Output type',('Detailed Table','Count Summary','Chart'))
     if nominationsOutput == 'Detailed Table':
         st.header('Nominations Details')
