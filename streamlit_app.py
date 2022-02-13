@@ -29,14 +29,13 @@ def grab_predictions():
 nominees = grab_nominees()
 df = grab_predictions()
 emails = df['email'].to_list()
-# st.write(emails)
 
 if st.checkbox('Show nominees'):
     nomineesFilter = nominees.copy()
     filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
     if len(filterCategories)>0:
         nomineesFilter = nomineesFilter[nomineesFilter['Category'].isin(filterCategories)]
-    nominationsOutput = st.radio('Output type',('Detailed Table','Count Summary','Chart'))
+    nominationsOutput = st.radio('Output type',('Chart','Count Summary','Detailed Table'))
     if nominationsOutput == 'Detailed Table':
         st.header('Nominations Details')
         st.write(nomineesFilter)
@@ -74,7 +73,7 @@ with st.form("my_picks"):
             checkPass = currentUserDF.iloc[0]['password']
             if checkPass != password:
                 checkOK= False
-                        
+
         if checkOK:
             st.write("Thank you!")
             st.balloons()
