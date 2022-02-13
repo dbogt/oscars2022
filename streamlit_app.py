@@ -45,7 +45,8 @@ with st.form("my_picks"):
                 'best_movie':best_movie_pick,
                 'best_director':best_director_pick,
                 'best_actor':best_actor_pick,
-                'best_actress':best_actress_pick}, 'key':user_email)
+                'best_actress':best_actress_pick,
+                'key':user_email})
 
 db_content = db.fetch().items
 df = pd.DataFrame(db_content)
