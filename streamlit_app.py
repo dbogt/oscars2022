@@ -17,6 +17,7 @@ safeCols.remove('password')
 def grab_nominees():
     df = pd.read_csv("Oscars2022_Nominees.csv")
     df['Count'] = 1
+    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + "(" + x['Movie' + ")"], axis=1)
     return df
 
 def grab_predictions():
@@ -51,7 +52,7 @@ if st.checkbox('Show nominees'):
 
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 # best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
-best_directors = nominees[nominees['Category']=='Best Director']['Nominee'].drop_duplicates().sort_values()
+best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
 
 # best_directors = ['Kenneth Branagh – Belfast',
 #                     'Ryusuke Hamaguchi – Drive My Car',
