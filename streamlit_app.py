@@ -92,14 +92,18 @@ if st.checkbox('Show predictions by person'):
         st.dataframe(safeDF)
 
 if st.checkbox('Show summary picks'):
-    st.header('Best Movie')
-    st.write(df['best_movie'].value_counts())
-    
-    # fig = px.bar(safeDF, x="nation", y="count", color="medal", title="Long-Form Input")
-    # fig = px.histogram(df, x='best_movie', color="name", barmode='stack').update_xaxes(categoryorder="total descending")
-    fig = px.histogram(df, x='best_movie', color="name").update_xaxes(categoryorder="total descending")
+    summaryDict = {'Best Movie':'best_movie',
+                    'Best Director':'best_director',
+                    'Best Actor':'best_actor',
+                    'Best Actress':'best_actress'}
+    summaryPicks = st.multiselect("Pick categories to show",summaryDict.keys())
+    for pick in summaryPicks:
+        colName = summaryDict[pick]
+        st.header(pick)
+        st.write(df[colName].value_counts())
+        fig = px.histogram(df, x=colName, color="name", labels={colName:pick}).update_xaxes(categoryorder="total descending")
 
-    st.plotly_chart(fig)
+        st.plotly_chart(fig)
 
 
     st.header('Best Director')
