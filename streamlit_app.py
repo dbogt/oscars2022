@@ -16,6 +16,7 @@ safeCols.remove('password')
 @st.cache
 def grab_nominees():
     df = pd.read_csv("Oscars2022_Nominees.csv")
+    df['Count'] = 1
     return df
 
 def grab_predictions():
@@ -31,12 +32,18 @@ emails = df['email'].to_list()
 # st.write(emails)
 
 if st.checkbox('Show nominees'):
-    st.write(nominees)
+    nominationsOutput = st.radio('Output type',('Detailed Table','Count Summary','Chart'))
     st.write("Nominations by Movie")
-    st.write(nominees['Movie'].value_counts())
-    nominees['Count'] = 1
-    figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=500).update_xaxes(categoryorder="total descending")
-    st.plotly_chart(figNom)
+    if nominationsOutput == 'Detiled Table':
+        st.write('Nominations Details')
+        st.dataframe(nominees)
+    elif nominationsOutput == 'Count Summary':
+        st.write("# of Nominations by Movie")
+        st.write(nominees['Movie'].value_counts())
+    else:
+        st.write("Nominations Breakdown by Movie")
+        figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=500).update_xaxes(categoryorder="total descending")
+        st.plotly_chart(figNom)
 
 
 
