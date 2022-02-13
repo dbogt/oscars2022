@@ -17,7 +17,7 @@ safeCols.remove('password')
 def grab_nominees():
     df = pd.read_csv("Oscars2022_Nominees.csv")
     df['Count'] = 1
-    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + "(" + x['Movie'] + ")", axis=1)
+    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + " (" + x['Movie'] + ")", axis=1)
     return df
 
 def grab_predictions():
@@ -53,22 +53,24 @@ if st.checkbox('Show nominees'):
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 # best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
+best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
+best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
 
 # best_directors = ['Kenneth Branagh – Belfast',
 #                     'Ryusuke Hamaguchi – Drive My Car',
 #                     'Paul Thomas Anderson – Licorice Pizza',
 #                     'Jane Campion – The Power of the Dog',
 #                     'Steven Spielberg – West Side Story']
-best_actors = ['Javier Bardem – Being the Ricardos as Desi Arnaz',
-                'Benedict Cumberbatch – The Power of the Dog as Phil Burbank',
-                'Andrew Garfield – Tick, Tick... Boom! as Jonathan Larson',
-                'Will Smith – King Richard as Richard Williams',
-                'Denzel Washington – The Tragedy of Macbeth as Lord Macbeth']
-best_actress = ['Jessica Chastain – The Eyes of Tammy Faye as Tammy Faye Bakker',
-                'Olivia Colman – The Lost Daughter as Leda Caruso',
-                'Penélope Cruz – Parallel Mothers as Janis Martínez Moreno',
-                'Nicole Kidman – Being the Ricardos as Lucille Ball',
-                'Kristen Stewart – Spencer as Diana, Princess of Wales']
+# best_actors = ['Javier Bardem – Being the Ricardos as Desi Arnaz',
+#                 'Benedict Cumberbatch – The Power of the Dog as Phil Burbank',
+#                 'Andrew Garfield – Tick, Tick... Boom! as Jonathan Larson',
+#                 'Will Smith – King Richard as Richard Williams',
+#                 'Denzel Washington – The Tragedy of Macbeth as Lord Macbeth']
+# best_actress = ['Jessica Chastain – The Eyes of Tammy Faye as Tammy Faye Bakker',
+#                 'Olivia Colman – The Lost Daughter as Leda Caruso',
+#                 'Penélope Cruz – Parallel Mothers as Janis Martínez Moreno',
+#                 'Nicole Kidman – Being the Ricardos as Lucille Ball',
+#                 'Kristen Stewart – Spencer as Diana, Princess of Wales']
 
 st.header("Predictions")
 st.write("Enter your predictions below")
