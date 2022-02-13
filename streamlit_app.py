@@ -36,7 +36,8 @@ with st.form("my_picks"):
     best_actress_pick = st.selectobx('Who will win the best actress?', best_actress)
     submit_btn = st.form_submit_button("Save Picks")
 
-if submitted:
+
+if submit_btn:
     st.write("Thank you!")
     st.balloons()
     db.put({"name": user_name,"email": user_email,
