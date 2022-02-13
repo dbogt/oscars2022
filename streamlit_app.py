@@ -41,7 +41,7 @@ if st.checkbox('Show nominees'):
         st.write(nominees['Movie'].value_counts())
     else:
         st.header("Nominations Breakdown by Movie")
-        figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=500).update_xaxes(categoryorder="total descending")
+        figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
 
 
