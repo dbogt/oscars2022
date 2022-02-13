@@ -9,6 +9,8 @@ db = deta.Base("oscar_bets_test")
 
 db_content = db.fetch().items
 df = pd.DataFrame(db_content)
+cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
+df = df[cols]
 emails = df['email'].to_list()
 # st.write(emails)
 
