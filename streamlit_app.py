@@ -32,8 +32,8 @@ with st.form("my_picks"):
     password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)")
     best_movie_pick = st.selectbox('What movie will win the best picture?',best_movies)
     best_director_pick = st.selectbox('Who will win best director?', best_directors)
-    best_actor_pick = st.selectobx('Who will win the best actor?', best_actors)
-    best_actress_pick = st.selectobx('Who will win the best actress?', best_actress)
+    best_actor_pick = st.selectbox('Who will win the best actor?', best_actors)
+    best_actress_pick = st.selectbox('Who will win the best actress?', best_actress)
     submit_btn = st.form_submit_button("Save Picks")
 
 
