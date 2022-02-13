@@ -7,11 +7,15 @@ st.title("Oscars 2022 Predictions")
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
 
+cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
+safeCols = cols.copy()
+safeCols.remove('email')
+safeCols.remove('password')
+
 def grab_predictions():
 
     db_content = db.fetch().items
     df = pd.DataFrame(db_content)
-    cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
     df = df[cols]
     return df
 
@@ -78,5 +82,10 @@ with st.form("my_picks"):
 # db_content = db.fetch().items
 # df = pd.DataFrame(db_content)
 if st.checkbox('Show predictions by person'):
-    st.dataframe(df)
+    safeDF = df[safeCols]
+    adminPass = st.text_input('Admin Password')
+    if adminPass == st.secrets['admin_pass']:
+        st.dataframe(df)
+    else:
+        st.dataframe(safeDF)
 
