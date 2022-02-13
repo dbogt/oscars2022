@@ -97,20 +97,12 @@ if st.checkbox('Show summary picks'):
                     'Best Actor':'best_actor',
                     'Best Actress':'best_actress'}
     summaryPicks = st.multiselect("Pick categories to show",summaryDict.keys())
+    outputType = st.radio('Output type',('Tables','Bar Charts'))
     for pick in summaryPicks:
         colName = summaryDict[pick]
         st.header(pick)
-        st.write(df[colName].value_counts())
-        fig = px.histogram(df, x=colName, color="name", labels={colName:pick}).update_xaxes(categoryorder="total descending")
-
-        st.plotly_chart(fig)
-
-
-    st.header('Best Director')
-    st.write(df['best_director'].value_counts())
-
-    st.header('Best Actor')
-    st.write(df['best_actor'].value_counts())
-
-    st.header('Best Actress')
-    st.write(df['best_actress'].value_counts())
+        if outputType == 'Tables':
+            st.write(df[colName].value_counts())
+        else:
+            fig = px.histogram(df, x=colName, color="name", labels={colName:pick}).update_xaxes(categoryorder="total descending")
+            st.plotly_chart(fig)
