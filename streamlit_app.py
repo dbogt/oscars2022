@@ -96,7 +96,7 @@ if st.checkbox('Show summary picks'):
     st.write(df['best_movie'].value_counts())
     
     # fig = px.bar(safeDF, x="nation", y="count", color="medal", title="Long-Form Input")
-    fig = px.histogram(df, x='best_movie', color="name", barmode='group')
+    fig = px.histogram(df, x='best_movie', color="name", barmode='stack')
     st.plotly_chart(fig)
 
 
