@@ -46,7 +46,7 @@ if submitted:
             'best_actor':best_actor_pick,
             'best_actress':best_actress_pick})
 
-db_content = db.fetch().
+db_content = db.fetch().items
 df = pd.DataFrame(db_content)
 if st.checkbox('Show predictions by person'):
     st.dataframe(df)
