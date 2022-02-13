@@ -10,7 +10,7 @@ db = deta.Base("oscar_bets_test")
 db_content = db.fetch().items
 df = pd.DataFrame(db_content)
 emails = df['email'].to_list()
-st.write(emails)
+# st.write(emails)
 
 best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = ['Kenneth Branagh – Belfast',
@@ -43,18 +43,31 @@ with st.form("my_picks"):
 
 
     if submit_btn:
-        st.write("Thank you!")
-        st.balloons()
-        db.put({"name": user_name,"email": user_email,
-                'password':password,
-                'best_movie':best_movie_pick,
-                'best_director':best_director_pick,
-                'best_actor':best_actor_pick,
-                'best_actress':best_actress_pick,
-                'key':user_email})
+        if user_email in emails:
+            checkPass = df[df['email'] == user_email]['passowrd']
+            if checkPass == password:
+                checkOK= True
+            else:
+                checkOK = False
+        else:
+            checkOK = True
+        
 
-db_content = db.fetch().items
-df = pd.DataFrame(db_content)
+        if checkOK:
+            st.write("Thank you!")
+            st.balloons()
+            db.put({"name": user_name,"email": user_email,
+                    'password':password,
+                    'best_movie':best_movie_pick,
+                    'best_director':best_director_pick,
+                    'best_actor':best_actor_pick,
+                    'best_actress':best_actress_pick,
+                    'key':user_email})
+        else:
+            st.write("Incorrect password, try again or submit with another email!")
+
+# db_content = db.fetch().items
+# df = pd.DataFrame(db_content)
 if st.checkbox('Show predictions by person'):
     st.dataframe(df)
 
