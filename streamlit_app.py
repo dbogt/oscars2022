@@ -8,7 +8,7 @@ st.title("Oscars 2022 Predictions")
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
 
-cols = ['name','email','password','best_movie','best_director','best_actor','best_actress']
+cols = ['name','email','password','city','best_movie','best_director','best_actor','best_actress']
 safeCols = cols.copy()
 safeCols.remove('email')
 safeCols.remove('password')
@@ -46,6 +46,7 @@ with st.form("my_picks"):
     st.write("Predictions Forms")
     user_name = st.text_input("Your name (First Last)")
     user_email = st.text_input("Your email")
+    user_city = st.text_input("Your city")
     password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)")
     best_movie_pick = st.selectbox('What movie will win the best picture?',best_movies)
     best_director_pick = st.selectbox('Who will win best director?', best_directors)
@@ -75,6 +76,7 @@ with st.form("my_picks"):
                     'best_director':best_director_pick,
                     'best_actor':best_actor_pick,
                     'best_actress':best_actress_pick,
+                    'city':user_city,
                     'key':user_email})
             df = grab_predictions()
         else:
@@ -103,5 +105,5 @@ if st.checkbox('Show summary picks'):
         if outputType == 'Tables':
             st.write(df[colName].value_counts())
         else:
-            fig = px.histogram(df, x=colName, color="name", labels={colName:pick}).update_xaxes(categoryorder="total descending")
+            fig = px.histogram(df, x=colName, color="city", hover_name="name" labels={colName:pick}).update_xaxes(categoryorder="total descending")
             st.plotly_chart(fig)
