@@ -90,4 +90,14 @@ if st.checkbox('Show predictions by person'):
         st.dataframe(safeDF)
 
 if st.checkbox('Show summary picks'):
+    st.header('Best Movie')
+    st.write(df['best_movie'].value_counts())
+
+    st.header('Best Director')
+    st.write(df['best_director'].value_counts())
+
+    st.header('Best Actor')
     st.write(df['best_actor'].value_counts())
+
+    st.header('Best Actress')
+    st.write(df['best_actress'].value_counts())
