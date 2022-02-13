@@ -13,6 +13,11 @@ safeCols = cols.copy()
 safeCols.remove('email')
 safeCols.remove('password')
 
+@st.cache
+def grab_nominees():
+    df = pd.read_csv("Oscars2022_Nominees.csv")
+    return df
+
 def grab_predictions():
 
     db_content = db.fetch().items
@@ -20,9 +25,20 @@ def grab_predictions():
     df = df[cols]
     return df
 
+nominees = grab_nominees()
 df = grab_predictions()
 emails = df['email'].to_list()
 # st.write(emails)
+
+if st.checkbox('Show nominees'):
+    st.write(nominees)
+    st.write("Nominations by Movie")
+    st.write(nominees['Movie'].values_counts())
+    nominees['Count'] = 1
+    figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack').update_xaxes(categoryorder="total descending")
+    st.plotly_chart(figNom)
+
+
 
 best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = ['Kenneth Branagh – Belfast',
