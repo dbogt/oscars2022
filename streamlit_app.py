@@ -3,7 +3,6 @@ import pandas as pd
 from deta import Deta
 import plotly.express as px
 
-
 st.title("Oscars 2022 Predictions")
 
 deta = Deta(st.secrets["project_key"])
