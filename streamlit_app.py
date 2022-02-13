@@ -89,3 +89,5 @@ if st.checkbox('Show predictions by person'):
     else:
         st.dataframe(safeDF)
 
+if st.checkbox('Show summary picks'):
+    st.write(df['best_actor'].value_counts())
