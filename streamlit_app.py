@@ -36,7 +36,7 @@ if st.checkbox('Show nominees'):
     st.write("Nominations by Movie")
     if nominationsOutput == 'Detiled Table':
         st.write('Nominations Details')
-        st.dataframe(nominees)
+        st.write(nominees)
     elif nominationsOutput == 'Count Summary':
         st.write("# of Nominations by Movie")
         st.write(nominees['Movie'].value_counts())
