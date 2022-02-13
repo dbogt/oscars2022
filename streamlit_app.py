@@ -32,17 +32,20 @@ emails = df['email'].to_list()
 # st.write(emails)
 
 if st.checkbox('Show nominees'):
-    filterCategories = st.multiselect("Filter by category", nominees['Category'].unique())
+    nomineesFilter = nominees.copy()
+    filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
+    if len(filterCategories)>0:
+        nomineesFilter = nomineesFilter[nomineesFilter['Category'].isin(filterCategories)]
     nominationsOutput = st.radio('Output type',('Detailed Table','Count Summary','Chart'))
     if nominationsOutput == 'Detailed Table':
         st.header('Nominations Details')
-        st.write(nominees)
+        st.write(nomineesFilter)
     elif nominationsOutput == 'Count Summary':
         st.header("# of Nominations by Movie")
-        st.write(nominees['Movie'].value_counts())
+        st.write(nomineesFilter['Movie'].value_counts())
     else:
         st.header("Nominations Breakdown by Movie")
-        figNom = px.bar(nominees, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
+        figNom = px.bar(nomineesFilter, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
 
 
