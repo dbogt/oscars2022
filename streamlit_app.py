@@ -19,7 +19,7 @@ def grab_predictions():
     df = pd.DataFrame(db_content)
     df = df[cols]
     return df
-
+emails = ['adsad']
 # df = grab_predictions()
 # emails = df['email'].to_list()
 # st.write(emails)
