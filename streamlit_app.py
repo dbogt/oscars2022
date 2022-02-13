@@ -7,6 +7,11 @@ st.title("Oscars 2022 Predictions")
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
 
+db_content = db.fetch().items
+df = pd.DataFrame(db_content)
+emails = df['email'].to_list()
+st.write(emails)
+
 best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = ['Kenneth Branagh – Belfast',
                     'Ryusuke Hamaguchi – Drive My Car',
