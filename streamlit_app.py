@@ -93,6 +93,7 @@ if st.checkbox('Show predictions by person'):
         st.dataframe(safeDF)
 
 if st.checkbox('Show summary picks'):
+    df['Count'] = 1
     summaryDict = {'Best Movie':'best_movie',
                     'Best Director':'best_director',
                     'Best Actor':'best_actor',
@@ -106,4 +107,6 @@ if st.checkbox('Show summary picks'):
             st.write(df[colName].value_counts())
         else:
             fig = px.histogram(df, x=colName, color="name", hover_name="city", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
+            fig2 = px.bar(df, x=colName, y='Count' color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
             st.plotly_chart(fig)
+            st.plotly_chart(fig2)
