@@ -44,7 +44,7 @@ with st.form("my_picks"):
 
     if submit_btn:
         if user_email in emails:
-            checkPass = df.loc[df['email'] == user_email]['passowrd']
+            checkPass = df.loc[df['email'] == user_email]['password']
             if checkPass == password:
                 checkOK= True
             else:
