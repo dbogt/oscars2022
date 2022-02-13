@@ -63,6 +63,7 @@ best_actress = ['Jessica Chastain – The Eyes of Tammy Faye as Tammy Faye Bakke
                 'Nicole Kidman – Being the Ricardos as Lucille Ball',
                 'Kristen Stewart – Spencer as Diana, Princess of Wales']
 
+st.header("Predictions")
 st.write("Enter your predictions below")
 with st.form("my_picks"):
     st.write("Predictions Forms")
