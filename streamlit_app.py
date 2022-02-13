@@ -1,6 +1,8 @@
 import streamlit as st
 import pandas as pd 
 from deta import Deta
+import plotly.express as px
+
 
 st.title("Oscars 2022 Predictions")
 
@@ -92,6 +94,11 @@ if st.checkbox('Show predictions by person'):
 if st.checkbox('Show summary picks'):
     st.header('Best Movie')
     st.write(df['best_movie'].value_counts())
+    
+    # fig = px.bar(safeDF, x="nation", y="count", color="medal", title="Long-Form Input")
+    fig = px.histogram(df, x='best_movie', color="name", barmode='group')
+    st.plotly_chart(fig)
+
 
     st.header('Best Director')
     st.write(df['best_director'].value_counts())
