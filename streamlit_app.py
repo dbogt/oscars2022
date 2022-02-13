@@ -17,7 +17,7 @@ safeCols.remove('password')
 def grab_nominees():
     df = pd.read_csv("Oscars2022_Nominees.csv")
     df['Count'] = 1
-    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + "(" + x['Movie' + ")"], axis=1)
+    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + "(" + x['Movie'] + ")", axis=1)
     return df
 
 def grab_predictions():
