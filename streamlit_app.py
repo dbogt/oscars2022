@@ -51,11 +51,13 @@ if st.checkbox('Show nominees'):
 
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 # best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
-best_directors = ['Kenneth Branagh – Belfast',
-                    'Ryusuke Hamaguchi – Drive My Car',
-                    'Paul Thomas Anderson – Licorice Pizza',
-                    'Jane Campion – The Power of the Dog',
-                    'Steven Spielberg – West Side Story']
+best_directors = nominees[nominees['Category']=='Best Director']['Nominee'].drop_duplicates().sort_values()
+
+# best_directors = ['Kenneth Branagh – Belfast',
+#                     'Ryusuke Hamaguchi – Drive My Car',
+#                     'Paul Thomas Anderson – Licorice Pizza',
+#                     'Jane Campion – The Power of the Dog',
+#                     'Steven Spielberg – West Side Story']
 best_actors = ['Javier Bardem – Being the Ricardos as Desi Arnaz',
                 'Benedict Cumberbatch – The Power of the Dog as Phil Burbank',
                 'Andrew Garfield – Tick, Tick... Boom! as Jonathan Larson',
