@@ -21,7 +21,6 @@ def grab_nominees():
     return df
 
 def grab_predictions():
-
     db_content = db.fetch().items
     df = pd.DataFrame(db_content)
     df = df[cols]
@@ -49,28 +48,10 @@ if st.checkbox('Show nominees'):
         figNom = px.bar(nomineesFilter, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
 
-
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
-# best_movies = ['Belfast','CODA',"Don't Look Up","Drive My Car","Dune","King Richard","Licorice Pizza","Nightmare Alley","The Power of the Dog","West Side Story"]
 best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
 best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
 best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
-
-# best_directors = ['Kenneth Branagh – Belfast',
-#                     'Ryusuke Hamaguchi – Drive My Car',
-#                     'Paul Thomas Anderson – Licorice Pizza',
-#                     'Jane Campion – The Power of the Dog',
-#                     'Steven Spielberg – West Side Story']
-# best_actors = ['Javier Bardem – Being the Ricardos as Desi Arnaz',
-#                 'Benedict Cumberbatch – The Power of the Dog as Phil Burbank',
-#                 'Andrew Garfield – Tick, Tick... Boom! as Jonathan Larson',
-#                 'Will Smith – King Richard as Richard Williams',
-#                 'Denzel Washington – The Tragedy of Macbeth as Lord Macbeth']
-# best_actress = ['Jessica Chastain – The Eyes of Tammy Faye as Tammy Faye Bakker',
-#                 'Olivia Colman – The Lost Daughter as Leda Caruso',
-#                 'Penélope Cruz – Parallel Mothers as Janis Martínez Moreno',
-#                 'Nicole Kidman – Being the Ricardos as Lucille Ball',
-#                 'Kristen Stewart – Spencer as Diana, Princess of Wales']
 
 st.header("Predictions")
 st.write("Enter your predictions below")
@@ -86,19 +67,14 @@ with st.form("my_picks"):
     best_actress_pick = st.selectbox('Who will win the best actress?', best_actress)
     submit_btn = st.form_submit_button("Save Picks")
 
-
     if submit_btn:
+        checkOK = True
         if user_email in emails:
             currentUserDF = df[df['email'] == user_email] 
             checkPass = currentUserDF.iloc[0]['password']
-            if checkPass == password:
-                checkOK= True
-            else:
-                checkOK = False
-        else:
-            checkOK = True
-        
-
+            if checkPass != password:
+                checkOK= False
+                        
         if checkOK:
             st.write("Thank you!")
             st.balloons()
@@ -114,8 +90,6 @@ with st.form("my_picks"):
         else:
             st.write("Incorrect password, try again or submit with another email!")
 
-# db_content = db.fetch().items
-# df = pd.DataFrame(db_content)
 if st.checkbox('Show predictions by person'):
     safeDF = df[safeCols]
     adminPass = st.text_input('Admin Password')
@@ -138,7 +112,5 @@ if st.checkbox('Show summary picks'):
         if outputType == 'Tables':
             st.write(df[colName].value_counts())
         else:
-            # fig = px.histogram(df, x=colName, color="name", hover_name="city", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
-            fig2 = px.bar(df, x=colName, y='Count', color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
-            # st.plotly_chart(fig)
-            st.plotly_chart(fig2)
+            fig = px.bar(df, x=colName, y='Count', color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
+            st.plotly_chart(fig)
