@@ -52,42 +52,43 @@ best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full']
 best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
 best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
 
-st.header("Predictions")
-st.write("Enter your predictions below")
-with st.form("my_picks"):
-    st.write("Predictions Forms")
-    user_name = st.text_input("Your name (First Last)")
-    user_email = st.text_input("Your email")
-    user_city = st.text_input("Your city")
-    password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)")
-    best_movie_pick = st.selectbox('What movie will win the best picture?',best_movies)
-    best_director_pick = st.selectbox('Who will win best director?', best_directors)
-    best_actor_pick = st.selectbox('Who will win the best actor?', best_actors)
-    best_actress_pick = st.selectbox('Who will win the best actress?', best_actress)
-    submit_btn = st.form_submit_button("Save Picks")
+if st.checkbox('Make Predictions'):
+    st.header("Predictions")
+    st.write("Enter your predictions below")
+    with st.form("my_picks"):
+        st.write("Predictions Forms")
+        user_name = st.text_input("Your name (First Last)")
+        user_email = st.text_input("Your email")
+        user_city = st.text_input("Your city")
+        password = st.text_input("A 'safe word' to retrieve your picks (do NOT use a real password)")
+        best_movie_pick = st.selectbox('What movie will win the best picture?',best_movies)
+        best_director_pick = st.selectbox('Who will win best director?', best_directors)
+        best_actor_pick = st.selectbox('Who will win the best actor?', best_actors)
+        best_actress_pick = st.selectbox('Who will win the best actress?', best_actress)
+        submit_btn = st.form_submit_button("Save Picks")
 
-    if submit_btn:
-        checkOK = True
-        if user_email in emails:
-            currentUserDF = df[df['email'] == user_email] 
-            checkPass = currentUserDF.iloc[0]['password']
-            if checkPass != password:
-                checkOK= False
+        if submit_btn:
+            checkOK = True
+            if user_email in emails:
+                currentUserDF = df[df['email'] == user_email] 
+                checkPass = currentUserDF.iloc[0]['password']
+                if checkPass != password:
+                    checkOK= False
 
-        if checkOK:
-            st.write("Thank you!")
-            st.balloons()
-            db.put({"name": user_name,"email": user_email,
-                    'password':password,
-                    'best_movie':best_movie_pick,
-                    'best_director':best_director_pick,
-                    'best_actor':best_actor_pick,
-                    'best_actress':best_actress_pick,
-                    'city':user_city,
-                    'key':user_email})
-            df = grab_predictions()
-        else:
-            st.write("Incorrect password, try again or submit with another email!")
+            if checkOK:
+                st.write("Thank you!")
+                st.balloons()
+                db.put({"name": user_name,"email": user_email,
+                        'password':password,
+                        'best_movie':best_movie_pick,
+                        'best_director':best_director_pick,
+                        'best_actor':best_actor_pick,
+                        'best_actress':best_actress_pick,
+                        'city':user_city,
+                        'key':user_email})
+                df = grab_predictions()
+            else:
+                st.write("Incorrect password, try again or submit with another email!")
 
 if st.checkbox('Show predictions by person'):
     safeDF = df[safeCols]
