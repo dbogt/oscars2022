@@ -172,6 +172,7 @@ elif selectPage == "Past Oscar Winners":
 
 else:
     st.title("Best Picture Emoji Quiz")
+    correctAnswers = st.secrets["quizResults"]['quiz_answers']
     st.write("Select the best picture nominee for each set of emojis.")
     quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
     answerOptions = ['Pick an answer'] + list(best_movies)
@@ -198,4 +199,19 @@ else:
 
             submit_quiz = st.form_submit_button("Submit Answers")
             if submit_quiz:
-                st.write(answerPicks)
+                score = 0
+                for x in rang(1,11):
+                    if answerPicks[str(x)] == correctAnswers[x-1]:
+                        score+=1
+                st.write("You correctly picked {} out of 10 movies.".format(score))
+                if score < 3:
+                    st.write("We know it's COVID and you haven't gone to a movie theatre in ages, but have you been living under a rock?🗿")
+                elif score < 6:
+                    st.write("Nice try, but you might want to text💬 a friend next time. Just don't do it during a movie.")
+                elif score <10:
+                    st.write("Wow, almost perfect! Are you a 🤢🍅 critic?")
+                else:
+                    st.write("Whoa 100%! You are ready to host the Oscars! 🎤🎬🏆")
+
+                # st.write("Your picks")
+                # st.write(answerPicks)
