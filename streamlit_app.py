@@ -20,13 +20,24 @@ def grab_nominees():
     df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + " (" + x['Movie'] + ")", axis=1)
     return df
 
+def fixFootnotes(messyNum):
+    messyNum = str(messyNum)
+    if "(" in messyNum:
+        messyNum = messyNum.split("(")[0].strip()
+    elif "[" in messyNum:
+        messyNum = messyNum.split("[")[0].strip()
+    clean = int(messyNum)
+    return clean
+
 @st.cache
 def grab_past_winners():
     url = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
     dfs = pd.read_html(url)
     df = dfs[0]
+    df['Awards'] = df['Awards'].apply(fixFootnotes)
+    df['Nominations'] = df['Nominations'].apply(fixFootnotes)
     return df
-
+    
 def grab_predictions():
     db_content = db.fetch().items
     df = pd.DataFrame(db_content)
