@@ -1,10 +1,13 @@
+#%% Import Packages
 import streamlit as st
 import pandas as pd 
 from deta import Deta
 import plotly.express as px
 
+#%% Streamlit Config Settings
 st.set_page_config(layout="wide",page_title='Oscars Predictions')
 
+#%% Deta Database Connection
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
 
@@ -13,6 +16,7 @@ safeCols = cols.copy()
 safeCols.remove('email')
 safeCols.remove('password')
 
+#%% Functions
 @st.cache
 def grab_nominees():
     df = pd.read_csv("Oscars2022_Nominees.csv")
@@ -44,19 +48,18 @@ def grab_predictions():
     df = df[cols]
     return df
 
-nominees = grab_nominees()
+#%% Import Data
+nominees = grab_nominees() 
 df = grab_predictions()
 emails = df['email'].to_list()
 
+#Nominees options for dropdowns
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
 best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
 best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
 
 #%% Main App
-selectPage = st.sidebar.selectbox("Select Page",
-    ("Oscar 2022 Nominees", "Oscar 2022 Predictions","Past Oscar Winners", "Best Picture Emoji Quiz"))
-
 appDetails = """
 Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
 Date: Feb 12, 2022 \n
@@ -69,6 +72,8 @@ From the left sidebar menu choose one of the pages:
 """
 with st.expander("See app info"):
     st.write(appDetails)
+
+selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2022 Nominees", "Oscar 2022 Predictions","Past Oscar Winners", "Best Picture Emoji Quiz"))
 
 if selectPage == "Oscar 2022 Nominees":
     st.title("🏆Oscars 2022 Nominees🎥")
@@ -116,14 +121,10 @@ elif selectPage == "Oscar 2022 Predictions":
                 if checkOK:
                     st.write("Thank you!")
                     st.balloons()
-                    db.put({"name": user_name,"email": user_email,
-                            'password':password,
-                            'best_movie':best_movie_pick,
-                            'best_director':best_director_pick,
-                            'best_actor':best_actor_pick,
-                            'best_actress':best_actress_pick,
-                            'city':user_city,
-                            'key':user_email})
+                    db.put({"name": user_name, "email": user_email, 'password':password,
+                            'best_movie':best_movie_pick, 'best_director':best_director_pick,
+                            'best_actor':best_actor_pick, 'best_actress':best_actress_pick,
+                            'city':user_city, 'key':user_email})
                     df = grab_predictions()
                 else:
                     st.write("Incorrect password, try again or submit with another email!")
@@ -152,6 +153,7 @@ elif selectPage == "Oscar 2022 Predictions":
             else:
                 fig = px.bar(df, x=colName, y='Count', color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
                 st.plotly_chart(fig)
+                
 elif selectPage == "Past Oscar Winners":
     st.title("Past Oscar Winners")
     aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
@@ -204,10 +206,7 @@ else:
                     st.write("We know it's COVID and you haven't gone to a movie theatre in ages, but have you been living under a rock?🗿")
                 elif score < 6:
                     st.write("Nice try, but you might want to text💬 a friend next time. Just don't do it during a movie.")
-                elif score <10:
+                elif score < 10:
                     st.write("Wow, almost perfect! Are you a 🤢🍅 critic?")
                 else:
                     st.write("Whoa 100%! You are ready to host the Oscars! 🎤🎬🏆")
-
-                # st.write("Your picks")
-                # st.write(answerPicks)
