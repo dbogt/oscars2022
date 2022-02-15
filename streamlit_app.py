@@ -55,7 +55,7 @@ best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].dr
 
 #%% Main App
 selectPage = st.sidebar.selectbox("Select Page",
-    ("Oscar 2022 Nominees", "Oscar 2022 Predictions","Past Oscar Winners"))
+    ("Oscar 2022 Nominees", "Oscar 2022 Predictions","Past Oscar Winners", "Best Picture Emoji Quiz"))
 
 appDetails = """
 Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
@@ -69,6 +69,7 @@ Page descriptions:
 - Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
 - Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
 - Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
+- Best Picture Emoji Quiz - Just for fun quiz, match the emoji with the correct Best Picture Nominee. 
 """
 with st.expander("See app info"):
     st.write(appDetails)
@@ -155,7 +156,7 @@ elif selectPage == "Oscar 2022 Predictions":
             else:
                 fig = px.bar(df, x=colName, y='Count', color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
                 st.plotly_chart(fig)
-else:
+elif selectPage == "Past Oscar Winners":
     st.title("Past Oscar Winners")
     aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
     st.markdown(aLinks, unsafe_allow_html=True)
@@ -168,3 +169,28 @@ else:
     # st.plotly_chart(figPastWinners) #scatter plot doesn't show all data points due to overlap
     st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
     st.write(pastWinnersDF)
+
+else:
+    st.title("Best Picture Emoji Quiz")
+    st.write("Select the best picture nominee for each set of emojis.")
+    st.header("1. 💾🚗")
+    st.header("2. 🔔🏃🏼‍♀️")
+    st.header("3. 👨‍💻🅰")
+    st.header("4. 🚫👀⬆️")
+    st.header("5. 🏜️🐛")
+    st.header("6. 👑🎾")
+    st.header("7. 🍬🍕")
+    st.header("8. 💤😱🎳")
+    st.header("9. 🔌🐶")
+    st.header("10. 🧭⬅📖")
+    quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
+    answerOptions = ['Pick an answer'] + best_movies
+    answerPicks = {}
+    if quizMode == "Easy":
+        with st.form("easy_quiz"):
+            for x in range(1,11):
+                answerPicks[str(x)] = st.selectbox(answers)
+            submit_quiz = st.form_submit_button("Submit Answers")
+            if submit_quiz:
+                st.write(answerPicks)
+            
