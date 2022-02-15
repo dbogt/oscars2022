@@ -172,11 +172,11 @@ elif selectPage == "Past Oscar Winners":
 
 else:
     st.title("Best Picture Emoji Quiz")
-    col1, col2 = st.columns(2)
     st.write("Select the best picture nominee for each set of emojis.")
     quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
     answerOptions = ['Pick an answer'] + list(best_movies)
     answerPicks = {}
+    col1, col2 = st.columns(2)
     with col1:
         st.header("1. 💾🚗")
         st.header("2. 🔔🏃🏼‍♀️")
