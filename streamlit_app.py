@@ -2,8 +2,8 @@ import streamlit as st
 import pandas as pd 
 from deta import Deta
 import plotly.express as px
-st.set_page_config(layout="wide",page_title='Oscars Predictions')
 
+st.set_page_config(layout="wide",page_title='Oscars Predictions')
 
 deta = Deta(st.secrets["project_key"])
 db = deta.Base("oscar_bets_test")
