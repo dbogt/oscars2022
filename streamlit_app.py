@@ -74,7 +74,7 @@ with st.expander("See app info"):
     st.write(appDetails)
 
 if selectPage == "Oscar 2022 Nominees":
-    st.title("Oscars 2022 Nominees")
+    st.title("🏆Oscars 2022 Nominees🎥")
     nomineesFilter = nominees.copy()
     filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
     if len(filterCategories)>0:
