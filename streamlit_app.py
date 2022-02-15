@@ -143,5 +143,6 @@ else:
     st.title("Past Oscar Winners")
     pastWinnersDF = grab_past_winners()
     st.write(pastWinnersDF)
-    figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards', color='Year', hover_name='Film')
+    figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
+                     color='Year', hover_name='Film', title='Nominations vs Awards')
     st.plotly_chart(figPastWinners)
