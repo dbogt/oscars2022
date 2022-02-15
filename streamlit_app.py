@@ -184,7 +184,7 @@ else:
     st.header("9. 🔌🐶")
     st.header("10. 🧭⬅📖")
     quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
-    answerOptions = ['Pick an answer'] + best_movies
+    answerOptions = ['Pick an answer'] + list(best_movies)
     answerPicks = {}
     if quizMode == "Easy":
         with st.form("easy_quiz"):
