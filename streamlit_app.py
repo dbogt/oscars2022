@@ -150,5 +150,5 @@ else:
     figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
                      color='Year', hover_name='Film', title='Nominations vs Awards')
 
-    st.plotly_chart(figPastWinners)
-    st.plotly_chart(figPastWinnersJitter)
+    # st.plotly_chart(figPastWinners) #scatter plot doesn't show all data points due to overlap
+    st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
