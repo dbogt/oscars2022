@@ -141,6 +141,9 @@ elif selectPage == "Oscar 2022 Predictions":
                 st.plotly_chart(fig)
 else:
     st.title("Past Oscar Winners")
+    aLinks = '''<a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
+    st.write("Live source from:")
+    st.markdown(aLinks, unsafe_allow_html=True)
     pastWinnersDF = grab_past_winners()
     st.write(pastWinnersDF)
     figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
