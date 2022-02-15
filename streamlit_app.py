@@ -147,4 +147,8 @@ else:
     st.write(pastWinnersDF)
     figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
                      color='Year', hover_name='Film', title='Nominations vs Awards')
+    figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
+                     color='Year', hover_name='Film', title='Nominations vs Awards')
+
     st.plotly_chart(figPastWinners)
+    st.plotly_chart(figPastWinnersJitter)
