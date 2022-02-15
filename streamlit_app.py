@@ -200,7 +200,7 @@ else:
             submit_quiz = st.form_submit_button("Submit Answers")
             if submit_quiz:
                 score = 0
-                for x in rang(1,11):
+                for x in range(1,11):
                     if answerPicks[str(x)] == correctAnswers[x-1]:
                         score+=1
                 st.write("You correctly picked {} out of 10 movies.".format(score))
