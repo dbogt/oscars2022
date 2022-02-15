@@ -60,10 +60,12 @@ selectPage = st.sidebar.selectbox("Select Page",
 appDetails = """
 Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
 Date: Feb 12, 2022 \n
+ 
 From the left sidebar menu choose one of the pages:
 - Oscar 2022 Nominees
 - Oscar 2022 Predictions
 - Past Oscar Winners
+- Best Picture Emoji Quiz \n
 
 Page descriptions:
 - Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
