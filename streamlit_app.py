@@ -199,7 +199,7 @@ else:
             if submit_quiz:
                 score = 0
                 for x in range(1,11):
-                    if answerPicks[str(x)] == correctAnswers[x-1]:
+                    if answerPicks[str(x)].strip().lower() == correctAnswers[x-1].strip().lower():
                         score+=1
                 st.write("You correctly picked {} out of 10 movies.".format(score))
                 if score < 3:
