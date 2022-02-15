@@ -60,7 +60,7 @@ selectPage = st.sidebar.selectbox("Select Page",
 appDetails = """
 Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
 Date: Feb 12, 2022 \n
-Purpose: Showcase Python dashboards with Streamlit package 
+Purpose: Showcase Python dashboards with Streamlit package \n
 From the left sidebar menu choose one of the pages:
 - Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
 - Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
