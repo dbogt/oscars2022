@@ -179,16 +179,16 @@ else:
     answerPicks = {}
     col1, col2 = st.columns(2)
     with col1:
-        st.header("1. 💾🚗")
-        st.header("2. 🔔🏃🏼‍♀️")
-        st.header("3. 👨‍💻🅰")
-        st.header("4. 🚫👀⬆️")
-        st.header("5. 🏜️🐛")
-        st.header("6. 👑🎾")
-        st.header("7. 🍬🍕")
+        st.header("1. 🚫👀⬆️")
+        st.header("2. 💾🚗")
+        st.header("3. 🍬🍕")
+        st.header("4. 🧭⬅📖")
+        st.header("5. 🔔🏃🏼‍♀️")
+        st.header("6. 🔌🐶")
+        st.header("7. 👨‍💻🅰")
         st.header("8. 💤😱🎳")
-        st.header("9. 🔌🐶")
-        st.header("10. 🧭⬅📖")
+        st.header("9. 🏜️🐛")
+        st.header("10. 👑🎾")
     with col2:    
         with st.form("quiz_form"):
             for x in range(1,11):
