@@ -66,9 +66,9 @@ From the left sidebar menu choose one of the pages:
 - Past Oscar Winners
 
 Page descriptions:
-Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
-Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
-Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
+- Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
+- Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
+- Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
 """
 with st.expander("See app info"):
     st.write(appDetails)
