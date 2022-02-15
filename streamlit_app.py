@@ -172,25 +172,30 @@ elif selectPage == "Past Oscar Winners":
 
 else:
     st.title("Best Picture Emoji Quiz")
+    col1, col2 = st.columns(2)
     st.write("Select the best picture nominee for each set of emojis.")
-    st.header("1. 💾🚗")
-    st.header("2. 🔔🏃🏼‍♀️")
-    st.header("3. 👨‍💻🅰")
-    st.header("4. 🚫👀⬆️")
-    st.header("5. 🏜️🐛")
-    st.header("6. 👑🎾")
-    st.header("7. 🍬🍕")
-    st.header("8. 💤😱🎳")
-    st.header("9. 🔌🐶")
-    st.header("10. 🧭⬅📖")
     quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
     answerOptions = ['Pick an answer'] + list(best_movies)
     answerPicks = {}
-    if quizMode == "Easy":
-        with st.form("easy_quiz"):
+    with col1:
+        st.header("1. 💾🚗")
+        st.header("2. 🔔🏃🏼‍♀️")
+        st.header("3. 👨‍💻🅰")
+        st.header("4. 🚫👀⬆️")
+        st.header("5. 🏜️🐛")
+        st.header("6. 👑🎾")
+        st.header("7. 🍬🍕")
+        st.header("8. 💤😱🎳")
+        st.header("9. 🔌🐶")
+        st.header("10. 🧭⬅📖")
+    with col2:    
+        with st.form("quiz_form"):
             for x in range(1,11):
-                answerPicks[str(x)] = st.selectbox(str(x), answerOptions)
+                if quizMode == "Easy":
+                    answerPicks[str(x)] = st.selectbox(str(x), answerOptions)
+                else:
+                    answerPicks[str(x)] = st.text_input(str(x))
+
             submit_quiz = st.form_submit_button("Submit Answers")
             if submit_quiz:
                 st.write(answerPicks)
-            
