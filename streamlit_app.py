@@ -24,7 +24,7 @@ def grab_nominees():
 def grab_past_winners():
     url = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
     dfs = pd.read_html(url)
-    df = df[0]
+    df = dfs[0]
     return df
 
 def grab_predictions():
