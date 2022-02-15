@@ -189,7 +189,7 @@ else:
     if quizMode == "Easy":
         with st.form("easy_quiz"):
             for x in range(1,11):
-                answerPicks[str(x)] = st.selectbox(answers)
+                answerPicks[str(x)] = st.selectbox(answersOptions)
             submit_quiz = st.form_submit_button("Submit Answers")
             if submit_quiz:
                 st.write(answerPicks)
