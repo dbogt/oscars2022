@@ -144,7 +144,6 @@ else:
     aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
     st.markdown(aLinks, unsafe_allow_html=True)
     pastWinnersDF = grab_past_winners()
-    st.write(pastWinnersDF)
     figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
                      color='Year', hover_name='Film', title='Nominations vs Awards')
     figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
@@ -152,3 +151,4 @@ else:
 
     # st.plotly_chart(figPastWinners) #scatter plot doesn't show all data points due to overlap
     st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
+    st.write(pastWinnersDF)
