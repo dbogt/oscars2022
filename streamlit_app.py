@@ -61,6 +61,7 @@ best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].dr
 
 #%% Main App
 appDetails = """
+[Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/)
 Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
 Date: Feb 12, 2022 \n
 Purpose: Showcase Python dashboards with Streamlit package \n
@@ -194,7 +195,7 @@ else:
                     answerPicks[str(x)] = st.selectbox(str(x), answerOptions)
                 else:
                     answerPicks[str(x)] = st.text_input(str(x))
-
+                    
             submit_quiz = st.form_submit_button("Submit Answers")
             if submit_quiz:
                 score = 0
