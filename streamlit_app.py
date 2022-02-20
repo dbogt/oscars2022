@@ -61,8 +61,8 @@ best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].dr
 
 #%% Main App
 appDetails = """
-[Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/)
-Created by: Bogdan Tudose, bogdan.tudose@marqueegroup.ca \n
+
+Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Feb 12, 2022 \n
 Purpose: Showcase Python dashboards with Streamlit package \n
 From the left sidebar menu choose one of the pages:
