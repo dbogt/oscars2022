@@ -70,6 +70,8 @@ From the left sidebar menu choose one of the pages:
 - Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
 - Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
 - Best Picture Emoji Quiz - Just for fun quiz, match the emoji with the correct Best Picture Nominee. 
+
+Article explaining the app: https://bit.ly/OscarsAppArticle
 """
 with st.expander("See app info"):
     st.write(appDetails)
