@@ -110,13 +110,13 @@ if selectPage == "Oscar 2022 Nominees":
         st.plotly_chart(figNom)
     st.header("Oscars vs BAFTA Nominations")
     nominations = oscars_vs_bafta()
-    figOscVsBAFTA = px.scatter(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
+    figOscVsBAFTA = px.strip(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
                      hover_name='Film', title='2022 Oscar Nominations vs BAFTA Nominations')
     # figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
     #                  color='Year', hover_name='Film', title='Nominations vs Awards')
 
     st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
-
+    st.write(nominations)
 
 elif selectPage == "Oscar 2022 Predictions":
     st.title("Oscars 2022 Predictions")
