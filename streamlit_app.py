@@ -41,6 +41,19 @@ def grab_past_winners():
     df['Awards'] = df['Awards'].apply(fixFootnotes)
     df['Nominations'] = df['Nominations'].apply(fixFootnotes)
     return df
+
+@st.cache
+def oscars_vs_bafta():
+    urlBAFTA = "https://en.wikipedia.org/wiki/75th_British_Academy_Film_Awards"
+    urlOSCARS = "https://en.wikipedia.org/wiki/94th_Academy_Awards"
+    dfs = pd.read_html(urlBAFTA)
+    baftas = dfs[2]
+    dfs = pd.read_html(urlOSCARS)
+    oscars = dfs[3]
+    nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
+    nominations = nominations.fillna(0)
+    return nominations
+
     
 def grab_predictions():
     db_content = db.fetch().items
@@ -95,6 +108,15 @@ if selectPage == "Oscar 2022 Nominees":
         st.header("Nominations Breakdown by Movie")
         figNom = px.bar(nomineesFilter, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
+    st.header("Oscars vs BAFTA Nominations")
+    nominations = oscars_vs_bafta()
+    figOscVsBAFTA = px.scatter(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
+                     hover_name='Film', title='2022 Oscar Nominations vs BAFTA Nominations')
+    # figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
+    #                  color='Year', hover_name='Film', title='Nominations vs Awards')
+
+    st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
+
 
 elif selectPage == "Oscar 2022 Predictions":
     st.title("Oscars 2022 Predictions")
