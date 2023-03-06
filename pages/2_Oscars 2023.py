@@ -18,7 +18,7 @@ safeCols.remove('password')
 
 #%% Functions
 @st.cache
-def grab_nominees():
+def grab_nominees2023():
     df = pd.read_csv("Oscars2023_Nominees.csv")
     df['Count'] = 1
     df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + " (" + x['Movie'] + ")", axis=1)
@@ -62,7 +62,7 @@ def grab_predictions():
     return df
 
 #%% Import Data
-nominees = grab_nominees() 
+nominees = grab_nominees2023() 
 df = grab_predictions()
 emails = df['email'].to_list()
 
