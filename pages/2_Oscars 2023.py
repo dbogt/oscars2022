@@ -87,7 +87,7 @@ Article explaining the app: https://bit.ly/OscarsAppArticle
 with st.expander("See app info"):
     st.write(appDetails)
 
-selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2022 Nominees", "Oscar 2022 Predictions"))
+selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2023 Nominees", "Oscar 2023 Predictions"))
 
 if selectPage == "Oscar 2023 Nominees":
     st.title("🏆Oscars 2023 Nominees🎥")
