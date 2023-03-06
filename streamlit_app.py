@@ -18,8 +18,8 @@ safeCols.remove('password')
 
 #%% Functions
 @st.cache
-def grab_nominees():
-    df = pd.read_csv("Oscars2022_Nominees.csv")
+def grab_nominees2023():
+    df = pd.read_csv("Oscars2023_Nominees.csv",encoding='latin1')
     df['Count'] = 1
     df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + " (" + x['Movie'] + ")", axis=1)
     return df
@@ -44,12 +44,12 @@ def grab_past_winners():
 
 @st.cache
 def oscars_vs_bafta():
-    urlBAFTA = "https://en.wikipedia.org/wiki/75th_British_Academy_Film_Awards"
-    urlOSCARS = "https://en.wikipedia.org/wiki/94th_Academy_Awards"
+    urlBAFTA = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
+    urlOSCARS = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
     dfs = pd.read_html(urlBAFTA)
     baftas = dfs[2]
     dfs = pd.read_html(urlOSCARS)
-    oscars = dfs[3]
+    oscars = dfs[4]
     nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
     nominations = nominations.fillna(0)
     return nominations
@@ -62,7 +62,7 @@ def grab_predictions():
     return df
 
 #%% Import Data
-nominees = grab_nominees() 
+nominees = grab_nominees2023() 
 df = grab_predictions()
 emails = df['email'].to_list()
 
@@ -74,25 +74,23 @@ best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].dr
 
 #%% Main App
 appDetails = """
-
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
-Date: Feb 12, 2022 \n
+Date: March 5, 2023 \n
 Purpose: Showcase Python dashboards with Streamlit package \n
 From the left sidebar menu choose one of the pages:
-- Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
-- Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
+- Oscar 2023 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
+- Oscar 2023 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
 - Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
 - Best Picture Emoji Quiz - Just for fun quiz, match the emoji with the correct Best Picture Nominee. 
-
 Article explaining the app: https://bit.ly/OscarsAppArticle
 """
 with st.expander("See app info"):
     st.write(appDetails)
 
-selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2022 Nominees", "Oscar 2022 Predictions","Past Oscar Winners", "Best Picture Emoji Quiz"))
+selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2023 Nominees", "Oscar 2023 Predictions"))
 
-if selectPage == "Oscar 2022 Nominees":
-    st.title("🏆Oscars 2022 Nominees🎥")
+if selectPage == "Oscar 2023 Nominees":
+    st.title("🏆Oscars 2023 Nominees🎥")
     nomineesFilter = nominees.copy()
     filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
     if len(filterCategories)>0:
@@ -111,12 +109,12 @@ if selectPage == "Oscar 2022 Nominees":
     st.header("Oscars vs BAFTA Nominations")
     nominations = oscars_vs_bafta()
     figOscVsBAFTA = px.strip(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
-                     hover_name='Film', title='2022 Oscar Nominations vs BAFTA Nominations')
+                     hover_name='Film', title='2023 Oscar Nominations vs BAFTA Nominations')
     st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
     st.write(nominations)
 
-elif selectPage == "Oscar 2022 Predictions":
-    st.title("Oscars 2022 Predictions")
+elif selectPage == "Oscar 2023 Predictions":
+    st.title("Oscars 2023 Predictions")
     if st.checkbox('Make Predictions'):
         st.header("Predictions")
         st.write("Enter your predictions below")
@@ -175,60 +173,3 @@ elif selectPage == "Oscar 2022 Predictions":
             else:
                 fig = px.bar(df, x=colName, y='Count', color="city", hover_name="name", barmode='stack', labels={colName:pick}).update_xaxes(categoryorder="total descending")
                 st.plotly_chart(fig)
-                
-elif selectPage == "Past Oscar Winners":
-    st.title("Past Oscar Winners")
-    aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
-    st.markdown(aLinks, unsafe_allow_html=True)
-    pastWinnersDF = grab_past_winners()
-    figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
-                     color='Year', hover_name='Film', title='Nominations vs Awards')
-    figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
-                     color='Year', hover_name='Film', title='Nominations vs Awards')
-
-    # st.plotly_chart(figPastWinners) #scatter plot doesn't show all data points due to overlap
-    st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
-    st.write(pastWinnersDF)
-
-else:
-    st.title("Best Picture Emoji Quiz")
-    correctAnswers = st.secrets["quizResults"]['quiz_answers']
-    st.write("Select the best picture nominee for each set of emojis.")
-    quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
-    answerOptions = ['Pick an answer'] + list(best_movies)
-    answerPicks = {}
-    col1, col2 = st.columns(2)
-    with col1:
-        st.header("1. 🚫👀⬆️")
-        st.header("2. 💾🚗")
-        st.header("3. 🍬🍕")
-        st.header("4. 🧭⬅📖")
-        st.header("5. 🔔🏃🏼‍♀️")
-        st.header("6. 🔌🐶")
-        st.header("7. 👨‍💻🅰")
-        st.header("8. 💤😱🎳")
-        st.header("9. 🏜️🐛")
-        st.header("10. 👑🎾")
-    with col2:    
-        with st.form("quiz_form"):
-            for x in range(1,11):
-                if quizMode == "Easy":
-                    answerPicks[str(x)] = st.selectbox(str(x), answerOptions)
-                else:
-                    answerPicks[str(x)] = st.text_input(str(x))
-                    
-            submit_quiz = st.form_submit_button("Submit Answers")
-            if submit_quiz:
-                score = 0
-                for x in range(1,11):
-                    if answerPicks[str(x)].strip().lower() == correctAnswers[x-1].strip().lower():
-                        score+=1
-                st.write("You correctly picked {} out of 10 movies.".format(score))
-                if score < 3:
-                    st.write("We know it's COVID and you haven't gone to a movie theatre in ages, but have you been living under a rock?🗿")
-                elif score < 6:
-                    st.write("Nice try, but you might want to text💬 a friend next time. Just don't do it during a movie.")
-                elif score < 10:
-                    st.write("Wow, almost perfect! Are you a 🤢🍅 critic?")
-                else:
-                    st.write("Whoa 100%! You are ready to host the Oscars! 🎤🎬🏆")
