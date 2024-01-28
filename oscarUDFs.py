@@ -32,7 +32,7 @@ def grab_past_winners(url=urlBase):
 urlBAFTA2023 = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
 urlOSCARS2023 = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
 @st.cache
-def oscars_vs_bafta(urlBafta=urlBAFTA2023, urlOSCARS=urlOSCARS2023):
+def oscars_vs_bafta(urlBAFTA=urlBAFTA2023, urlOSCARS=urlOSCARS2023):
     dfs = pd.read_html(urlBAFTA, match='Nominations')
     baftas = dfs[0]
     baftas['Film'] = baftas['Film'].apply(lambda x: x.split('[')[0].strip()) #sometimes footnotes in film name e.g. "[0]"
