@@ -13,7 +13,7 @@ urlBAFTA = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
 urlOSCARS = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
     
 #%% Import Data
-nominees = osc.grab_nominees() 
+nominees = osc.grab_nominees(csv) 
 nominations = osc.oscars_vs_bafta(urlBAFTA, urlOSCARS)
 
 #Nominees options for dropdowns
