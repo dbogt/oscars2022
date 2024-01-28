@@ -62,6 +62,6 @@ if selectPage == "Oscars Nominees":
 elif selectPage == "Oscars vs BAFTA":
     st.header("Oscars vs BAFTA Nominations")
     figOscVsBAFTA = px.strip(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
-                     hover_name='Film', title='2023 Oscar Nominations vs BAFTA Nominations')
+                     hover_name='Film', title=f'{year} Oscar Nominations vs BAFTA Nominations')
     st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
     st.write(nominations)
