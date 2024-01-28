@@ -64,7 +64,7 @@ def grab_predictions():
 #%% Import Data
 nominees = grab_nominees() 
 # df = grab_predictions()
-emails = df['email'].to_list()
+# emails = df['email'].to_list()
 
 #Nominees options for dropdowns
 # best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
