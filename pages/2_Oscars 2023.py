@@ -37,10 +37,10 @@ def grab_past_winners():
 def oscars_vs_bafta():
     urlBAFTA = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
     urlOSCARS = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
-    dfs = pd.read_html(urlBAFTA)
-    baftas = dfs[2]
-    dfs = pd.read_html(urlOSCARS)
-    oscars = dfs[4]
+    dfs = pd.read_html(urlBAFTA, match='Nominations')
+    baftas = dfs[0]
+    dfs = pd.read_html(urlOSCARS, match='Nominations')
+    oscars = dfs[0]
     nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
     nominations = nominations.fillna(0)
     return nominations
