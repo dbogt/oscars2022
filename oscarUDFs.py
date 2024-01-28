@@ -1,5 +1,6 @@
 #%% Import Packages
 import pandas as pd 
+import streamlit as st
 
 #%% Functions
 @st.cache_data
@@ -30,7 +31,7 @@ def grab_past_winners(url=urlBase):
 
 urlBAFTA2023 = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
 urlOSCARS2023 = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
-@st.cache
+@st.cache_data
 def oscars_vs_bafta(urlBafta=urlBAFTA2023, urlOSCARS=urlOSCARS2023):
     dfs = pd.read_html(urlBAFTA, match='Nominations')
     baftas = dfs[0]
