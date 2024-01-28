@@ -2,7 +2,7 @@
 import pandas as pd 
 
 #%% Functions
-@st.cache
+@st.cache_data
 def grab_nominees(csv):
     #csv = "Oscars2023_Nominees.csv"
     df = pd.read_csv(csv,encoding='latin1')
@@ -20,7 +20,7 @@ def fixFootnotes(messyNum):
     return clean
 
 urlBase = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
-@st.cache
+@st.cache_data
 def grab_past_winners(url=urlBase):
     dfs = pd.read_html(url)
     df = dfs[0]
