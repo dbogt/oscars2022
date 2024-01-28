@@ -7,14 +7,6 @@ import oscarUDFs as osc
 #%% Streamlit Config Settings
 st.set_page_config(layout="wide",page_title='Oscars 2024')
 
-#%% Data
-csv = "Oscars2023_Nominees.csv"
-urlBAFTA = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
-urlOSCARS = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
-    
-#%% Import Data
-nominees = osc.grab_nominees(csv) 
-nominations = osc.oscars_vs_bafta(urlBAFTA, urlOSCARS)
 
 #%% Main App
 appDetails = """
@@ -31,10 +23,27 @@ Article explaining the app: https://bit.ly/OscarsAppArticle
 with st.expander("See app info"):
     st.write(appDetails)
 
+
+#%% Pick Year
+year = st.sidebar.selectbox("Select Year", ('2022','2023','2024'))
+csvs = {'2023':"Oscars2023_Nominees.csv", '2022': "Oscars2022_Nominees.csv"
+baftas = {'2022':'75th', '2023':'76th', '2024':'77th}
+oscars = {'2022':'94th', '2023':'95th', '2024':'96th'} 
+
+#%% Data
+csv = csvs[year]
+urlBAFTA = f"https://en.wikipedia.org/wiki/{baftas[year]}_British_Academy_Film_Awards"
+urlOSCARS = f"https://en.wikipedia.org/wiki/{oscars[year]}_Academy_Awards"
+
+
+#%% Import Data
+nominees = osc.grab_nominees(csv) 
+nominations = osc.oscars_vs_bafta(urlBAFTA, urlOSCARS)
+
 selectPage = st.sidebar.selectbox("Select Page", ("Oscars Nominees", "Oscars vs BAFTA"))
 
 if selectPage == "Oscars Nominees":
-    st.title("🏆Oscars 2024 Nominees🎥")
+    st.title(f"🏆Oscars {year} Nominees🎥")
     nomineesFilter = nominees.copy()
     filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
     if len(filterCategories)>0:
@@ -50,8 +59,8 @@ if selectPage == "Oscars Nominees":
         st.header("Nominations Breakdown by Movie")
         figNom = px.bar(nomineesFilter, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
-    st.header("Oscars vs BAFTA Nominations")
 elif selectPage == "Oscars vs BAFTA":
+    st.header("Oscars vs BAFTA Nominations")
     figOscVsBAFTA = px.strip(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
                      hover_name='Film', title='2023 Oscar Nominations vs BAFTA Nominations')
     st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
