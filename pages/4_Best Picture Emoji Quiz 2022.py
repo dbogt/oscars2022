@@ -7,80 +7,10 @@ import plotly.express as px
 #%% Streamlit Config Settings
 st.set_page_config(layout="wide",page_title='Oscars Predictions')
 
-#%% Deta Database Connection
-deta = Deta(st.secrets["project_key"])
-db = deta.Base("oscar_bets_test")
-
-cols = ['name','email','password','city','best_movie','best_director','best_actor','best_actress']
-safeCols = cols.copy()
-safeCols.remove('email')
-safeCols.remove('password')
-
-#%% Functions
-@st.cache
-def grab_nominees():
-    df = pd.read_csv("Oscars2022_Nominees.csv")
-    df['Count'] = 1
-    df['Nominee Full'] = df.apply(lambda x: x['Nominee'] + " (" + x['Movie'] + ")", axis=1)
-    return df
-
-def fixFootnotes(messyNum):
-    messyNum = str(messyNum)
-    if "(" in messyNum:
-        messyNum = messyNum.split("(")[0].strip()
-    elif "[" in messyNum:
-        messyNum = messyNum.split("[")[0].strip()
-    clean = int(messyNum)
-    return clean
-
-@st.cache
-def grab_past_winners():
-    url = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
-    dfs = pd.read_html(url)
-    df = dfs[0]
-    df['Awards'] = df['Awards'].apply(fixFootnotes)
-    df['Nominations'] = df['Nominations'].apply(fixFootnotes)
-    return df
-
-@st.cache
-def oscars_vs_bafta():
-    urlBAFTA = "https://en.wikipedia.org/wiki/75th_British_Academy_Film_Awards"
-    urlOSCARS = "https://en.wikipedia.org/wiki/94th_Academy_Awards"
-    dfs = pd.read_html(urlBAFTA)
-    baftas = dfs[2]
-    dfs = pd.read_html(urlOSCARS)
-    oscars = dfs[3]
-    nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
-    nominations = nominations.fillna(0)
-    return nominations
-
-    
-def grab_predictions():
-    db_content = db.fetch().items
-    df = pd.DataFrame(db_content)
-    df = df[cols]
-    return df
-
-#%% Import Data
-nominees = grab_nominees() 
-df = grab_predictions()
-emails = df['email'].to_list()
-
-#Nominees options for dropdowns
-best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
-best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
-best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
-best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
-
 #%% Main App
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
 Date: Feb 12, 2022 \n
-Purpose: Showcase Python dashboards with Streamlit package \n
-From the left sidebar menu choose one of the pages:
-- Oscar 2022 Nominees - View this year's nominations broken down by movie and category in an interactive bar chart. Categories can also be filtered in a dropdown.
-- Oscar 2022 Predictions - Make predictions for the top categories and compare your answers with other people around the world.
-- Past Oscar Winners - Interesting stats of past Oscar winners, including a chart of # of nominations vs # of awards.
 - Best Picture Emoji Quiz - Just for fun quiz, match the emoji with the correct Best Picture Nominee. 
 Article explaining the app: https://bit.ly/OscarsAppArticle
 """
