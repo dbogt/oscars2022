@@ -2,7 +2,7 @@
 import streamlit as st
 import pandas as pd 
 import plotly.express as px
-import oscarsUDFs as osc
+import oscarUDFs as osc
 
 #%% Streamlit Config Settings
 st.set_page_config(layout="wide",page_title='Oscars 2024')
