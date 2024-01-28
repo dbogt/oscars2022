@@ -16,12 +16,6 @@ urlOSCARS = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
 nominees = osc.grab_nominees(csv) 
 nominations = osc.oscars_vs_bafta(urlBAFTA, urlOSCARS)
 
-#Nominees options for dropdowns
-best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
-best_directors = nominees[nominees['Category']=='Best Director']['Nominee Full'].drop_duplicates().sort_values()
-best_actors = nominees[nominees['Category']=='Best Actor']['Nominee Full'].drop_duplicates().sort_values()
-best_actress = nominees[nominees['Category']=='Best Actress']['Nominee Full'].drop_duplicates().sort_values()
-
 #%% Main App
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
@@ -37,9 +31,9 @@ Article explaining the app: https://bit.ly/OscarsAppArticle
 with st.expander("See app info"):
     st.write(appDetails)
 
-selectPage = st.sidebar.selectbox("Select Page", ("Oscar 2024 Nominees", "Oscar 2024 Emoji Quiz"))
+selectPage = st.sidebar.selectbox("Select Page", ("Oscars Nominees", "Oscars vs BAFTA"))
 
-if selectPage == "Oscar 2024 Nominees":
+if selectPage == "Oscars Nominees":
     st.title("🏆Oscars 2024 Nominees🎥")
     nomineesFilter = nominees.copy()
     filterCategories = st.multiselect("Filter by category (leave blank to show all)", nominees['Category'].unique())
@@ -57,7 +51,7 @@ if selectPage == "Oscar 2024 Nominees":
         figNom = px.bar(nomineesFilter, x='Movie', y='Count', color="Category", hover_name="Nominee", barmode='stack', height=600).update_xaxes(categoryorder="total descending")
         st.plotly_chart(figNom)
     st.header("Oscars vs BAFTA Nominations")
-    
+elif selectPage == "Oscars vs BAFTA":
     figOscVsBAFTA = px.strip(nominations, x='Nominations_OSCAR', y='Nominations_BAFTA',
                      hover_name='Film', title='2023 Oscar Nominations vs BAFTA Nominations')
     st.plotly_chart(figOscVsBAFTA) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
