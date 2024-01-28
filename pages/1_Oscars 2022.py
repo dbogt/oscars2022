@@ -50,6 +50,8 @@ def oscars_vs_bafta():
     baftas = dfs[2]
     dfs = pd.read_html(urlOSCARS)
     oscars = dfs[2]
+    baftas['Film'] = baftas['Film'].apply(lambda x: x.split('[')[0].strip())
+
     nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
     nominations = nominations.fillna(0)
     return nominations
