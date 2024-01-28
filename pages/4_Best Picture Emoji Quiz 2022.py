@@ -7,7 +7,7 @@ import oscarUDFs as osc
 
 csv = "Oscars2022_Nominees.csv"
 #%% Import Data
-nominees = grab_nominees(csv) 
+nominees = osc.grab_nominees(csv) 
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 
 #%% Streamlit Config Settings
