@@ -26,8 +26,8 @@ with st.expander("See app info"):
 
 #%% Pick Year
 year = st.sidebar.selectbox("Select Year", ('2022','2023','2024'))
-csvs = {'2023':"Oscars2023_Nominees.csv", '2022': "Oscars2022_Nominees.csv"}
-baftas = {'2022':'75th', '2023':'76th', '2024':'77th}
+csvs = {'2022': "Oscars2022_Nominees.csv", '2023':"Oscars2023_Nominees.csv", '2024':"Oscars2023_Nominees.csv" }
+baftas = {'2022':'75th', '2023':'76th', '2024':'77th'}
 oscars = {'2022':'94th', '2023':'95th', '2024':'96th'} 
 
 #%% Data
