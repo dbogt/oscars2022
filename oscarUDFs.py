@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 #%% Functions
-@st.cache_data
+@st.cache
 def grab_nominees(csv):
     #csv = "Oscars2023_Nominees.csv"
     df = pd.read_csv(csv,encoding='latin1')
@@ -21,7 +21,7 @@ def fixFootnotes(messyNum):
     return clean
 
 urlBase = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
-@st.cache_data
+@st.cache
 def grab_past_winners(url=urlBase):
     dfs = pd.read_html(url)
     df = dfs[0]
@@ -31,7 +31,7 @@ def grab_past_winners(url=urlBase):
 
 urlBAFTA2023 = "https://en.wikipedia.org/wiki/76th_British_Academy_Film_Awards"
 urlOSCARS2023 = "https://en.wikipedia.org/wiki/95th_Academy_Awards"
-@st.cache_data
+@st.cache
 def oscars_vs_bafta(urlBafta=urlBAFTA2023, urlOSCARS=urlOSCARS2023):
     dfs = pd.read_html(urlBAFTA, match='Nominations')
     baftas = dfs[0]
