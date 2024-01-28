@@ -5,13 +5,15 @@ from deta import Deta
 import plotly.express as px
 import oscarUDFs as osc
 
+
+#%% Streamlit Config Settings
+st.set_page_config(layout="wide",page_title='Oscars Predictions')
+
 csv = "Oscars2022_Nominees.csv"
 #%% Import Data
 nominees = osc.grab_nominees(csv) 
 best_movies = nominees[nominees['Category']=='Best Picture']['Nominee'].drop_duplicates().sort_values()
 
-#%% Streamlit Config Settings
-st.set_page_config(layout="wide",page_title='Oscars Predictions')
 
 #%% Main App
 appDetails = """
