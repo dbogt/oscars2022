@@ -32,6 +32,9 @@ def grab_other_awards():
     df2 = pd.read_excel("oscars comparison to sag.xlsx", sheet_name=0, header=2, nrows=5)
     return df, df2
 
+#%% Format Map
+portFormats = {}
+
 
 #%% Main App
 appDetails = """
@@ -87,7 +90,7 @@ else:
     otherAwards = ['SAG','BAFTA','PGA','DGA']
     for award in otherAwards:
         summary[award + " Overlap %"] = summary[award] / summary['OSCARS']
-    st.dataframe(summary, column_config={
-                     'SAG Overlap %':st.column_config.NumberColumn(format="%.2%")
-                 })
+        portFormats[award + " Overlap %"] = '{:0.1%}'
+
+    st.dataframe(summary.style.highlight_max(axis=0).format(portFormats))
     st.write(filterDF)
