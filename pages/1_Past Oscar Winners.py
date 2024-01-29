@@ -74,18 +74,18 @@ else:
     - DGA - <a href="https://en.wikipedia.org/wiki/Directors_Guild_of_America_Award_for_Outstanding_Directing_%E2%80%93_Feature_Film" target="_blank">Directors Guild of America Award</a>: Great predictor to Oscars Best Director. Used here to compare for Best Picture.
     """
     st.markdown(awardsDetails, unsafe_allow_html=True)
-    st.write(summaryDF)
-    st.write(otherAwardsDF)
+    # st.write(summaryDF)
     categories = otherAwardsDF['Category'].unique()
     years = otherAwardsDF['Year'].unique()
     categoriesPick = st.multiselect('Pick categories to filter:', categories, categories)
     # yearsPick = st.multiselect('Pick years to filter:', years, years)    
     years = st.slider('Select a range of years to filter', otherAwardsDF['Year'].min(), otherAwardsDF['Year'].max(), (otherAwardsDF['Year'].min(), otherAwardsDF['Year'].max()))
     # filterDF = otherAwardsDF[(otherAwardsDF['Category'].isin(categoriesPick)) & (otherAwardsDF['Year'].isin(yearsPick))]
-    filterDF = otherAwardsDF[(otherAwardsDF['Category'].isin(categoriesPick)) & (otherAwardsDF['Year'].between(years[0],years[1] inclusive='both'))]
+    filterDF = otherAwardsDF[(otherAwardsDF['Category'].isin(categoriesPick)) & (otherAwardsDF['Year'].between(years[0],years[1], inclusive='both'))]
 
     summary = filterDF.groupby(['Category'])[['OSCARS','SAG','BAFTA','PGA','DGA']].sum()
     otherAwards = ['SAG','BAFTA','PGA','DGA']
     for award in otherAwards:
         summary[award + " Overlap %"] = summary[award] / summary['OSCARS']
     st.write(summary)
+    st.write(filterDF)
