@@ -80,7 +80,7 @@ else:
     years = otherAwardsDF['Year'].unique()
     categoriesPick = st.multiselect('Pick categories to filter:', categories, categories)
     yearsPick = st.multiselect('Pick years to filter:', years, years)    
-    filterDF = otherAwardsDF[otherAwardsDF['Category'].isin(categoriesPick) & (otherAwardsDF['Year'].isin(yearsPick)]
+    filterDF = otherAwardsDF[(otherAwardsDF['Category'].isin(categoriesPick)) & (otherAwardsDF['Year'].isin(yearsPick))]
     summary = filterDF.groupby(['Category'])[['OSCARS','SAG','BAFTA','PGA','DGA']].sum()
     otherAwards = ['SAG','BAFTA','PGA','DGA']
     for award in otherAwards:
