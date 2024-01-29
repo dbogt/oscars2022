@@ -94,5 +94,6 @@ else:
 
     st.dataframe(summary.style.highlight_max(axis=0).format(portFormats))
     fig = px.imshow(summary.iloc[:,-4:], text_auto=True)
+    fig.update_traces(textinfo="label+percent")
     st.plotly_chart(fig)
     st.write(filterDF)
