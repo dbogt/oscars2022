@@ -7,7 +7,7 @@ import oscarUDFs as osc
 
 
 #%% Streamlit Config Settings
-st.set_page_config(layout="wide",page_title='Oscars Predictions')
+st.set_page_config(layout="wide",page_title='Emoji Quiz 2022')
 
 csv = "Oscars2022_Nominees.csv"
 #%% Import Data
@@ -25,7 +25,7 @@ Article explaining the app: https://bit.ly/OscarsAppArticle
 with st.expander("See app info"):
     st.write(appDetails)
 
-st.title("Best Picture Emoji Quiz")
+st.title("Best Picture Emoji Quiz 2022")
 correctAnswers = st.secrets["quizResults"]['quiz_answers']
 st.write("Select the best picture nominee for each set of emojis.")
 quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
