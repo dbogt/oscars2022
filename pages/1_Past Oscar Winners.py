@@ -43,13 +43,25 @@ with st.expander("See app info"):
     st.write(appDetails)
 
 st.title("Past Oscar Winners")
-aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
-st.markdown(aLinks, unsafe_allow_html=True)
-pastWinnersDF = grab_past_winners()
-figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
-               color='Year', hover_name='Film', title='Nominations vs Awards')
-figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
-               color='Year', hover_name='Film', title='Nominations vs Awards')
-
-st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
-st.write(pastWinnersDF)
+selectPage = st.sidebar.selectbox("Select Page", ("Nominations vs Awards", "Oscars vs Other Awards"))
+if selectPage == "Nominations vs Awards":
+    aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
+    st.markdown(aLinks, unsafe_allow_html=True)
+    pastWinnersDF = grab_past_winners()
+    figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
+                   color='Year', hover_name='Film', title='Nominations vs Awards')
+    figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
+                   color='Year', hover_name='Film', title='Nominations vs Awards')
+    
+    st.plotly_chart(figPastWinnersJitter) #strip plot creates a jitter plot (slightly offsets markers for overlaping pts)
+    st.write(pastWinnersDF)
+else:
+    st.header("Oscars vs Other Awards")
+    awardsDetails = """
+    Sources and details of other awards:
+    - SAG - <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">Screen Actors Guild Awards</a>: Awarded since 1995, overlaps in 5 major categories with Osacars (best leading and supporting actor/actress, best picture). Categories can also be filtered in a dropdown.
+    - BAFTA - <a href="https://en.wikipedia.org/wiki/British_Academy_Film_Awards" target="_blank">British Academy Film Awards</a>: Similar categories to Oscars, but more focus on international films. Much lower correlations to Oscars than the SAG awards.
+    - PGA - <a href="https://en.wikipedia.org/wiki/Producers_Guild_of_America_Awards" target="_blank">Producters Guild of America Awards</a>: Awarded since 1990, overlaps in 3 major categories with Osacars (producer for Best Picutre, Best Animated, Best Documentary). Analysis below only shown for Best Picture.
+    - DGA - <a href="https://en.wikipedia.org/wiki/Directors_Guild_of_America_Award_for_Outstanding_Directing_%E2%80%93_Feature_Film" target="_blank">Directors Guild of America Award</a>: Great predictor to Oscars Best Director. Used here to compare for Best Picture.
+    """
+    st.write(awardsDetails)
