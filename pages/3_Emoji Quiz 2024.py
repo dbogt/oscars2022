@@ -41,7 +41,7 @@ with col1:
     st.header("7. ⏳🔄❤️")
     st.header("8. 🚫🏞️🧐")
     st.header("9. ❌💸🧸")
-    st.header("10. 👤🔍🍂")
+    st.header("10. 👤🔍⛰️⬇️")
 with col2:    
     with st.form("quiz_form"):
         for x in range(1,11):
