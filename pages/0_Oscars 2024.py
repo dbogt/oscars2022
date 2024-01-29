@@ -39,7 +39,7 @@ urlOSCARS = f"https://en.wikipedia.org/wiki/{oscars[year]}_Academy_Awards"
 #%% Import Data
 nominees = osc.grab_nominees(csv) 
 nominations = osc.oscars_vs_bafta(urlBAFTA, urlOSCARS)
-st.write(nominees)
+# st.write(nominees)
 selectPage = st.sidebar.selectbox("Select Page", ("Oscars Nominees", "Oscars vs BAFTA"))
 
 if selectPage == "Oscars Nominees":
