@@ -93,6 +93,6 @@ else:
         portFormats[award + " Overlap %"] = '{:0.1%}'
 
     st.dataframe(summary.style.highlight_max(axis=0).format(portFormats))
-    fig = px.imshow(summary, text_auto=True)
+    fig = px.imshow(summary.iloc[:,-4:], text_auto=True)
     st.plotly_chart(fig)
     st.write(filterDF)
