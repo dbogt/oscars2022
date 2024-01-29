@@ -87,8 +87,7 @@ else:
     otherAwards = ['SAG','BAFTA','PGA','DGA']
     for award in otherAwards:
         summary[award + " Overlap %"] = summary[award] / summary['OSCARS']
-    st.write(summary)
-    st.dataframe(filterDF, 
-                 column_config={
+    st.dataframe(summary, column_config={
                      'SAG Overlap %':st.column_config.NumberColumn(format="%.2%")
                  })
+    st.write(filterDF)
