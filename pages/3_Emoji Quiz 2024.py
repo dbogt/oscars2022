@@ -25,7 +25,7 @@ with st.expander("See app info"):
     st.write(appDetails)
 
 st.title("Best Picture Emoji Quiz - 2024")
-correctAnswers = st.secrets["quizResults2024"]['quiz_answers_2024']
+correctAnswers = st.secrets["quizResults"]['quiz_answers']
 st.write("Select the best picture nominee for each set of emojis.")
 quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
 answerOptions = ['Pick an answer'] + list(best_movies)
