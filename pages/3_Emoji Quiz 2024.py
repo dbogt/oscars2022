@@ -25,7 +25,7 @@ with st.expander("See app info"):
     st.write(appDetails)
 
 st.title("Best Picture Emoji Quiz - 2024")
-correctAnswers = st.secrets["quizResults"]['quiz_answers']
+correctAnswers = st.secrets["quizResults"]['quiz_answers_2024']
 st.write("Select the best picture nominee for each set of emojis.")
 quizMode = st.radio('Quiz Difficulty',('Easy','Hard'))
 answerOptions = ['Pick an answer'] + list(best_movies)
@@ -33,10 +33,10 @@ answerPicks = {}
 col1, col2 = st.columns(2)
 with col1:
     st.header("1. 👱‍♀️🎀🏰")
-    st.header("2. 🧍‍♂️🕰️🔙")
+    st.header("2. 🤲➡️↩️➡️↩️")
     st.header("3. 🔪🌸🌛")
     st.header("4. 👨‍🔬💣⚛️")
-    st.header("5. 🎼👨‍🎤🎶")
+    st.header("5. 🎼👨‍🏫🎶")
     st.header("6. 🇺🇸✍️📖")
     st.header("7. ⏳🔄❤️")
     st.header("8. 🚫🏞️🧐")
@@ -58,7 +58,7 @@ with col2:
                     score+=1
             st.write("You correctly picked {} out of 10 movies.".format(score))
             if score < 3:
-                st.write("We know it's COVID and you haven't gone to a movie theatre in ages, but have you been living under a rock?🗿")
+                st.write("You should probably stop watching just Marvel movies, and go watch an 'artistic' movie everyone once in a while.")
             elif score < 6:
                 st.write("Nice try, but you might want to text💬 a friend next time. Just don't do it during a movie.")
             elif score < 10:
