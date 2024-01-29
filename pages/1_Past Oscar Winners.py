@@ -27,6 +27,12 @@ def grab_past_winners():
     df['Nominations'] = df['Nominations'].apply(fixFootnotes)
     return df
 
+def grab_other_awards():
+    df = pd.read_excel("oscars comparison to sag.xlsx", sheet_name=1, header=3)
+    df2 = pd.read_excel("oscars comparison to sag.xlsx", sheet_name=0, header=2, nrows=5)
+    return df, df2
+
+
 #%% Main App
 appDetails = """
 Created by: [Bogdan Tudose](https://www.linkedin.com/in/tudosebogdan/) \n
@@ -42,12 +48,15 @@ Article explaining the app: https://bit.ly/OscarsAppArticle
 with st.expander("See app info"):
     st.write(appDetails)
 
+pastWinnersDF = grab_past_winners()
+otherAwardsDF, summaryDF = grab_other_awards()
+
 st.title("Past Oscar Winners")
 selectPage = st.sidebar.selectbox("Select Page", ("Nominations vs Awards", "Oscars vs Other Awards"))
 if selectPage == "Nominations vs Awards":
     aLinks = '''Live source from: <a href="https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films" target="_blank">https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films</a><br>'''
     st.markdown(aLinks, unsafe_allow_html=True)
-    pastWinnersDF = grab_past_winners()
+    
     figPastWinners = px.scatter(pastWinnersDF, x='Nominations', y='Awards',
                    color='Year', hover_name='Film', title='Nominations vs Awards')
     figPastWinnersJitter = px.strip(pastWinnersDF, x='Nominations', y='Awards',
@@ -64,4 +73,6 @@ else:
     - PGA - <a href="https://en.wikipedia.org/wiki/Producers_Guild_of_America_Awards" target="_blank">Producters Guild of America Awards</a>: Awarded since 1990, overlaps in 3 major categories with Osacars (producer for Best Picutre, Best Animated, Best Documentary). Analysis below only shown for Best Picture.
     - DGA - <a href="https://en.wikipedia.org/wiki/Directors_Guild_of_America_Award_for_Outstanding_Directing_%E2%80%93_Feature_Film" target="_blank">Directors Guild of America Award</a>: Great predictor to Oscars Best Director. Used here to compare for Best Picture.
     """
-    st.write(awardsDetails)
+    st.markdown(awardsDetails, unsafe_allow_html=True)
+    st.write(summaryDF)
+    st.write(otherAwardsDF)
