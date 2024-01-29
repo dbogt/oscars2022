@@ -76,3 +76,10 @@ else:
     st.markdown(awardsDetails, unsafe_allow_html=True)
     st.write(summaryDF)
     st.write(otherAwardsDF)
+    categories = sorted(list(otherAwardsDF['Category'].unique()))
+    categoriesPick = st.multiselect('Pick categories to filter:', categories, categories)
+    summary = otherAwardsDF.groupby(['Category'])[['OSCARS','SAG','BAFTA','PGA','DGA']].sum()
+    otherAwards = ['SAG','BAFTA','PGA','DGA']
+    for award in otherAwards:
+        summary[award + " Overlap %"] = summary[award] / summary['OSCARS']
+    st.write(summary)
