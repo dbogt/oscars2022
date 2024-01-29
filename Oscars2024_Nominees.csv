@@ -1,0 +1,121 @@
+Category,Category Type,Nominee,Movie,Description
+Best Picture,Easy,American Fiction,American Fiction,
+Best Picture,Easy,Anatomy of a Fall,Anatomy of a Fall,
+Best Picture,Easy,Barbie,Barbie,
+Best Picture,Easy,The Holdovers,The Holdovers,
+Best Picture,Easy,Killers of the Flower Moon,Killers of the Flower Moon,
+Best Picture,Easy,Maestro,Maestro,
+Best Picture,Easy,Oppenheimer,Oppenheimer,
+Best Picture,Easy,Past Lives,Past Lives,
+Best Picture,Easy,Poor Things,Poor Things,
+Best Picture,Easy,The Zone of Interest,The Zone of Interest,
+Best Director,Easy,Justine Triet,Anatomy of a Fall,
+Best Director,Easy,Martin Scorsese,Killers of the Flower Moon,
+Best Director,Easy,Christopher Nolan,Oppenheimer,
+Best Director,Easy,Yorgos Lanthimos,Poor Things,
+Best Director,Easy,Jonathan Glazer,The Zone of Interest,
+Best Actor,Easy,Bradley Cooper,Maestro,Leonard Bernstein
+Best Actor,Easy,Colman Domingo,Rustin,Bayard Rustin
+Best Actor,Easy,Paul Giamatti,The Holdovers,Paul Hunham
+Best Actor,Easy,Cillian Murphy,Oppenheimer,J. Robert Oppenheimer
+Best Actor,Easy,Jeffrey Wright,American Fiction,"Thelonious ""Monk"" Ellison"
+Best Actress,Easy,Annette Bening,Nyad,Diana Nyad
+Best Actress,Easy,Lily Gladstone,Killers of the Flower Moon,Mollie Burkhart
+Best Actress,Easy,Sandra Hüller,Anatomy of a Fall,Sandra Voyter
+Best Actress,Easy,Carey Mulligan,Maestro,Felicia Montealegre
+Best Actress,Easy,Emma Stone,Poor Things,Bella Baxter
+Best Supporting Actor,Medium,Sterling K. Brown,American Fiction,"Clifford ""Cliff"" Ellison"
+Best Supporting Actor,Medium,Robert De Niro,Killers of the Flower Moon,William King Hale
+Best Supporting Actor,Medium,Robert Downey Jr.,Oppenheimer,Lewis Strauss
+Best Supporting Actor,Medium,Ryan Gosling,Barbie,Ken
+Best Supporting Actor,Medium,Mark Ruffalo,Poor Things,Duncan Wedderburn
+Best Supporting Actress,Medium,Emily Blunt,Oppenheimer,Kitty Oppenheimer
+Best Supporting Actress,Medium,Danielle Brooks,The Color Purple,Sofia
+Best Supporting Actress,Medium,America Ferrera,Barbie,Gloria
+Best Supporting Actress,Medium,Jodie Foster,Nyad,Bonnie Stoll
+Best Supporting Actress,Medium,Da'Vine Joy Randolph,The Holdovers,Mary Lamb
+Best Original Screenplay,Medium,Anatomy of a Fall,Anatomy of a Fall , Justine Triet and Arthur Harari
+Best Original Screenplay,Medium,The Holdovers,The Holdovers, David Hemingson
+Best Original Screenplay,Medium,Maestro,Maestro, Bradley Cooper and Josh Singer
+Best Original Screenplay,Medium,May December,May December,Screenplay by Samy Burch; Story by Samy Burch and Alex Mechanik
+Best Original Screenplay,Medium,Past Lives,Past Lives, Celine Song
+Best Adapted Screenplay,Medium,American Fiction,American Fiction, Cord Jefferson; based on the novel Erasure by Percival Everett
+Best Adapted Screenplay,Medium,Barbie,Barbie, Greta Gerwig and Noah Baumbach; based on characters created by Ruth Handler
+Best Adapted Screenplay,Medium,Oppenheimer,Oppenheimer, Christopher Nolan; based on the biography American Prometheus by Kai Bird and Martin J. Sherwin
+Best Adapted Screenplay,Medium,Poor Things,Poor Things, Tony McNamara; based on the novel by Alasdair Gray
+Best Adapted Screenplay,Medium,The Zone of Interest,The Zone of Interest, Jonathan Glazer; based on the novel by Martin Amis
+Best Animated Feature Film,Medium,The Boy and the Heron,The Boy and the Heron, Hayao Miyazaki and Toshio Suzuki
+Best Animated Feature Film,Medium,Elemental,Elemental, Peter Sohn and Denise Ream
+Best Animated Feature Film,Medium,Nimona,Nimona," Nick Bruno, Troy Quane, Karen Ryan and Julie Zackary"
+Best Animated Feature Film,Medium,Robot Dreams,Robot Dreams," Pablo Berger, Ibon Cormenzana, Ignasi Estapé and Sandra Tapia Díaz"
+Best Animated Feature Film,Medium,Spider-Man: Across the Spider-Verse,Spider-Man: Across the Spider-Verse," Kemp Powers, Justin K. Thompson, Phil Lord, Christopher Miller and Amy Pascal"
+Best International Feature Film,Hard,Io capitano (Italy),Io capitano (Italy),directed by Matteo Garrone
+Best International Feature Film,Hard,Perfect Days (Japan),Perfect Days (Japan),directed by Wim Wenders
+Best International Feature Film,Hard,Society of the Snow (Spain),Society of the Snow (Spain),directed by J. A. Bayona
+Best International Feature Film,Hard,The Teachers' Lounge (Germany),The Teachers' Lounge (Germany),directed by ?lker Çatak
+Best International Feature Film,Hard,The Zone of Interest (United Kingdom),The Zone of Interest (United Kingdom),directed by Jonathan Glazer
+Best Documentary Feature,Hard,Bobi Wine: The People's President,Bobi Wine: The People's President,"Moses Bwayo, Christopher Sharp and John Battsek"
+Best Documentary Feature,Hard,The Eternal Memory,The Eternal Memory," Maite Alberdi, Juan de Dios Larraín, Pablo Larraín and Rocio Jadue"
+Best Documentary Feature,Hard,Four Daughters,Four Daughters, Kaouther Ben Hania and Nadim Cheikhrouha
+Best Documentary Feature,Hard,To Kill a Tiger,To Kill a Tiger," Nisha Pahuja, Cornelia Principe and David Oppenheim"
+Best Documentary Feature,Hard,20 Days in Mariupol,20 Days in Mariupol," Mstyslav Chernov, Michelle Mizner and Raney Aronson-Rath"
+Best Documentary Short Subject,Hard,The ABCs of Book Banning,The ABCs of Book Banning, Sheila Nevins and Trish Adlesic
+Best Documentary Short Subject,Hard,The Barber of Little Rock,The Barber of Little Rock,John Hoffman and Christine Turner
+Best Documentary Short Subject,Hard,Island in Between,Island in Between, S. Leo Chiang and Jean Tsien
+Best Documentary Short Subject,Hard,The Last Repair Shop,The Last Repair Shop, Ben Proudfoot and Kris Bowers
+Best Documentary Short Subject,Hard,N?i Nai & Wài Pó,N?i Nai & Wài Pó,Sean Wang and Sam Davis
+Best Live Action Short Film,Hard,The After,The After, Misan Harriman and Nicky Bentham
+Best Live Action Short Film,Hard,Invincible,Invincible, Vincent René-Lortie and Samuel Caron
+Best Live Action Short Film,Hard,Knight of Fortune,Knight of Fortune,Lasse Lyskjær Noer and Christian Norlyk
+Best Live Action Short Film,Hard,"Red, White and Blue","Red, White and Blue", Nazrin Choudhury and Sara McFarlane
+Best Live Action Short Film,Hard,The Wonderful Story of Henry Sugar,The Wonderful Story of Henry Sugar, Wes Anderson and Steven Rales
+Best Animated Short Film,Hard,Letter to a Pig,Letter to a Pig,Tal Kantor and Amit R. Gicelter
+Best Animated Short Film,Hard,Ninety-Five Senses,Ninety-Five Senses, Jared and Jerusha Hess
+Best Animated Short Film,Hard,Our Uniform,Our Uniform,Yegane Moghaddam
+Best Animated Short Film,Hard,Pachyderme,Pachyderme,Stéphanie Clément and Marc Rius
+Best Animated Short Film,Hard,War Is Over! Inspired by the Music of John and Yoko,War Is Over! Inspired by the Music of John and Yoko, Dave Mullins and Brad Booker
+Best Original Score,Medium,American Fiction,American Fiction, Laura Karpman
+Best Original Score,Medium,Indiana Jones and the Dial of Destiny,Indiana Jones and the Dial of Destiny, John Williams
+Best Original Score,Medium,Killers of the Flower Moon,Killers of the Flower Moon, Robbie Robertson (posthumous nomination)
+Best Original Score,Medium,Oppenheimer,Oppenheimer, Ludwig Göransson
+Best Original Score,Medium,Poor Things,Poor Things, Jerskin Fendrix
+Best Original Song,Medium,"""The Fire Inside"" from Flamin' Hot",Flamin' Hot,Music and lyrics by Diane Warren
+Best Original Song,Medium,"""I'm Just Ken"" from Barbie",Barbie,Music and lyrics by Mark Ronson and Andrew Wyatt
+Best Original Song,Medium,"""It Never Went Away"" from American Symphony",American Symphony,Music and lyrics by Jon Batiste and Dan Wilson
+Best Original Song,Medium,"""Wahzhazhe (A Song for My People)"" from Killers of the Flower Moon",Killers of the Flower Moon,Music and lyrics by Scott George
+Best Original Song,Medium,"""What Was I Made For?"" from Barbie",Barbie,Music and lyrics by Billie Eilish and Finneas O'Connell
+Best Sound,Medium,The Creator,The Creator,"Ian Voigt, Erik Aadahl, Ethan Van der Ryn, Tom Ozanich and Dean Zupancic"
+Best Sound,Medium,Maestro,Maestro," Steven A. Morrow, Richard King, Jason Ruder, Tom Ozanich and Dean Zupancic"
+Best Sound,Medium,Mission: Impossible,Mission: Impossible,Dead Reckoning Part One 
+Best Sound,Medium,Oppenheimer,Oppenheimer," Willie Burton, Richard King, Gary A. Rizzo and Kevin O'Connell"
+Best Sound,Medium,The Zone of Interest,The Zone of Interest,Tarn Willers and Johnnie Burn
+Best Production Design,Medium,Barbie,Barbie,Production Design: Sarah Greenwood; Set Decoration: Katie Spencer
+Best Production Design,Medium,Killers of the Flower Moon,Killers of the Flower Moon,Production Design: Jack Fisk; Set Decoration: Adam Willis
+Best Production Design,Medium,Napoleon,Napoleon,Production Design: Arthur Max; Set Decoration: Elli Griff
+Best Production Design,Medium,Oppenheimer,Oppenheimer,Production Design: Ruth De Jong; Set Decoration: Claire Kaufman
+Best Production Design,Medium,Poor Things,Poor Things,Production Design: James Price and Shona Heath; Set Decoration: Zsuzsa Mihalek
+Best Cinematography,Medium,El Conde,El Conde, Edward Lachman
+Best Cinematography,Medium,Killers of the Flower Moon,Killers of the Flower Moon, Rodrigo Prieto
+Best Cinematography,Medium,Maestro,Maestro, Matthew Libatique
+Best Cinematography,Medium,Oppenheimer,Oppenheimer, Hoyte van Hoytema
+Best Cinematography,Medium,Poor Things,Poor Things, Robbie Ryan
+Best Makeup and Hairstyling,Medium,Golda,Golda,"Karen Hartley Thomas, Suzi Battersby and Ashra Kelly-Blue"
+Best Makeup and Hairstyling,Medium,Maestro,Maestro," Kazu Hiro, Kay Georgiou and Lori McCoy-Bell"
+Best Makeup and Hairstyling,Medium,Oppenheimer,Oppenheimer,Luisa Abel
+Best Makeup and Hairstyling,Medium,Poor Things,Poor Things," Nadia Stacey, Mark Coulier and Josh Weston"
+Best Makeup and Hairstyling,Medium,Society of the Snow,Society of the Snow,"Ana López-Puigcerver, David Martí and Montse Ribé"
+Best Costume Design,Medium,Barbie,Barbie, Jacqueline Durran
+Best Costume Design,Medium,Killers of the Flower Moon,Killers of the Flower Moon, Jacqueline West
+Best Costume Design,Medium,Napoleon,Napoleon, Janty Yates and Dave Crossman
+Best Costume Design,Medium,Oppenheimer,Oppenheimer, Ellen Mirojnick
+Best Costume Design,Medium,Poor Things,Poor Things,Holly Waddington
+Best Film Editing,Medium,Anatomy of a Fall,Anatomy of a Fall, Laurent Sénéchal
+Best Film Editing,Medium,The Holdovers,The Holdovers, Kevin Tent
+Best Film Editing,Medium,Killers of the Flower Moon,Killers of the Flower Moon, Thelma Schoonmaker
+Best Film Editing,Medium,Oppenheimer,Oppenheimer, Jennifer Lame
+Best Film Editing,Medium,Poor Things,Poor Things, Yorgos Mavropsaridis
+Best Visual Effects,Medium,The Creator,The Creator,"Jay Cooper, Ian Comley, Andrew Roberts and Neil Corbould"
+Best Visual Effects,Medium,Godzilla Minus One,Godzilla Minus One," Takashi Yamazaki, Kiyoko Shibuya, Masaki Takahashi and Tatsuji Nojima"
+Best Visual Effects,Medium,Guardians of the Galaxy Vol. 3,Guardians of the Galaxy Vol. 3," Stephane Ceretti, Alexis Wajsbrot, Guy Williams and Theo Bialek"
+Best Visual Effects,Medium,Mission: Impossible,Mission: Impossible,Dead Reckoning Part One 
+Best Visual Effects,Medium,Napoleon,Napoleon," Charley Henley, Luc-Ewen Martin-Fenouillet, Simone Coco and Neil Corbould"
