@@ -3,3 +3,5 @@ plotly
 lxml==4.5.0
 openpyxl
 html5lib
+beautifulsoup4
+requests
