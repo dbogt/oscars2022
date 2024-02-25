@@ -2,3 +2,4 @@ deta==1.0.1
 plotly
 lxml==4.5.0
 openpyxl
+html5lib
