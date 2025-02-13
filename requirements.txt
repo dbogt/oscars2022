@@ -1,3 +1,4 @@
+streamlit
 deta
 plotly
 lxml
