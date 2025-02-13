@@ -37,7 +37,7 @@ def oscars_vs_bafta(urlBAFTA=urlBAFTA2023, urlOSCARS=urlOSCARS2023):
     baftas = dfs[0]
     baftas['Film'] = baftas['Film'].apply(lambda x: x.split('[')[0].strip()) #sometimes footnotes in film name e.g. "[0]"
     dfs = pd.read_html(urlOSCARS, match='Nominations')
-    oscars = dfs[0]
+    oscars = dfs[-1]
     nominations = baftas.merge(oscars, how='outer',on=['Film'], suffixes=("_BAFTA","_OSCAR"))
     nominations = nominations.fillna(0)
     return nominations
