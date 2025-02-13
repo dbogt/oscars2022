@@ -25,6 +25,7 @@ def grab_past_winners():
     df = dfs[0]
     df['Awards'] = df['Awards'].apply(fixFootnotes)
     df['Nominations'] = df['Nominations'].apply(fixFootnotes)
+    df['Ratio Awards'] = df['Awards'] / df['Nominations']
     return df
 
 def grab_other_awards():
