@@ -35,6 +35,8 @@ csv = csvs[year]
 urlBAFTA = f"https://en.wikipedia.org/wiki/{baftas[year]}_British_Academy_Film_Awards"
 urlOSCARS = f"https://en.wikipedia.org/wiki/{oscars[year]}_Academy_Awards"
 
+st.sidebar.write(urlBAFTA)
+st.sidebar.write(urlOSCARS)
 
 #%% Import Data
 nominees = osc.grab_nominees(csv) 
