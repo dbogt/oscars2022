@@ -18,7 +18,7 @@ def fixFootnotes(messyNum):
     clean = int(messyNum)
     return clean
 
-@st.cache
+@st.cache_data
 def grab_past_winners():
     url = "https://en.wikipedia.org/wiki/List_of_Academy_Award-winning_films"
     dfs = pd.read_html(url)
