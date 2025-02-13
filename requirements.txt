@@ -1,6 +1,6 @@
-deta==1.0.1
+deta
 plotly
-lxml==4.5.0
+lxml
 openpyxl
 html5lib
 beautifulsoup4
